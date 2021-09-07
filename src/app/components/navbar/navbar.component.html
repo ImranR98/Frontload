@@ -1,0 +1,31 @@
+<mat-toolbar fxLayout="row" class="stdPadding mat-elevation-z1">
+    <div fxLayout="row" fxFlex="100%" fxLayoutAlign="space-between center" fxLayoutGap="1em">
+        
+        <h1><a routerLink="/">Frontload</a></h1>
+
+        <div>
+            <div fxLayout="row" fxLayoutGap="1em" fxLayoutAlign="default center" fxHide fxShow.sm fxShow.gt-sm>
+                <button mat-button routerLinkActive="active" routerLink="/" *ngIf="isLoggedIn">Home</button>
+                <button mat-button routerLinkActive="active" routerLink="/welcome" *ngIf="!isLoggedIn">Welcome</button>
+                <button mat-button (click)="logout()" *ngIf="isLoggedIn">Logout</button>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="default center" fxHide fxShow.lt-sm style="height: 0.5em !important;">
+                <button mat-icon-button routerLinkActive="active" routerLink="/" *ngIf="isLoggedIn"
+                    [matTooltipShowDelay]="1500" matTooltip="Home" aria-label="Button that takes you to the Home Page">
+                    <mat-icon>home</mat-icon>
+                </button>
+                <button mat-icon-button routerLinkActive="active" routerLink="/welcome" *ngIf="!isLoggedIn"
+                    [matTooltipShowDelay]="1500" matTooltip="Welcome"
+                    aria-label="Button that takes you to the Welcome page">
+                    <mat-icon>login</mat-icon>
+                </button>
+                <button mat-icon-button routerLinkActive="active" (click)="logout()" *ngIf="isLoggedIn"
+                    [matTooltipShowDelay]="1500" matTooltip="Logout" aria-label="Button that logs you out">
+                    <mat-icon>logout</mat-icon>
+                </button>
+            </div>
+        </div>
+
+    </div>
+</mat-toolbar>
