@@ -1,8 +1,7 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { BehaviorSubject, lastValueFrom, Observable } from 'rxjs';
+import { HelperService } from './helper.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +11,9 @@ export class UserService {
   // Observable that can be used by anything that needs to know the logged in state
   isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false)
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private router: Router, private helperService: HelperService) {
+    if (this.refreshToken.length > 0) this.isLoggedIn.next(true)
+  }
 
   // Getters and setters for access and refresh tokens
   set accessToken(token: string) {
@@ -29,64 +30,68 @@ export class UserService {
   }
 
   // Make HTTP request to refresh the access token; used by the HTTP interceptor
-  refreshAccessToken() { return this.http.post(`${environment.apiURL}/token`, { refreshToken: this.refreshToken }) }
+  refreshAccessToken() { return this.helperService.plainRequest('token', 'post', { refreshToken: this.refreshToken }) }
 
   // Used on manual logout or when HTTP interceptor fails to refresh access token
   logout() {
     this.accessToken = ''
     this.refreshToken = ''
     this.isLoggedIn.next(false)
+    this.router.navigate(['/welcome'])
+  }
+
+  // Get the current URL (only base part)
+  private get currentURLBase() { return `${window.location.href.slice(0, -window.location.pathname.length)}` }
+
+  // Make login request and save tokens if successful
+  async login(email: string, password: string) {
+    const result = await this.helperService.appRequest('login', 'post', { email, password }) as { token: string, refreshToken: string }
+    this.accessToken = result.token
+    this.refreshToken = result.refreshToken
+    this.isLoggedIn.next(true)
     this.router.navigate(['/'])
   }
 
-  private get currentURLBase() { return `${window.location.href.slice(0, -window.location.pathname.length)}` }
-
-  async login(email: string, password: string) {
-    const result = await this.http.post(`${environment.apiURL}/login`, { email, password }).toPromise() as { token: string, refreshToken: string }
-    this.accessToken = result.token
-    this.refreshToken = result.refreshToken
-  }
-
   async signUp(email: string, password: string) {
-    await this.http.post(`${environment.apiURL}/signup`, { email, password, clientVerificationURL: `${this.currentURLBase}/verify-email` }).toPromise()
+    await this.helperService.appRequest('signup', 'post', { email, password, clientVerificationURL: `${this.currentURLBase}/verify-email` })
   }
 
   async verifyEmail(emailVerificationToken: string) {
-    await this.http.post(`${environment.apiURL}/verify-email`, { emailVerificationToken }).toPromise()
+    await this.helperService.appRequest('verify-email', 'post', { emailVerificationToken })
   }
 
   async requestPasswordReset(email: string) {
-    await this.http.post(`${environment.apiURL}/request-password-reset`, { email, clientVerificationURL: `${this.currentURLBase}/reset-password` }).toPromise()
+    await this.helperService.appRequest('request-password-reset', 'post', { email, clientVerificationURL: `${this.currentURLBase}/reset-password` })
   }
 
-  async resetPassword(passwordResetToken: string) {
-    await this.http.post(`${environment.apiURL}/reset-password`, { passwordResetToken }).toPromise()
+  async resetPassword(passwordResetToken: string, password: string) {
+    await this.helperService.appRequest('reset-password', 'post', { passwordResetToken, password })
   }
 
   async me() {
-    return await this.http.get(`${environment.apiURL}/me`)
-      .toPromise() as { _id: number, email: string, verified: boolean, refreshTokens: { _id: string, ip: string, userAgent?: string, date: Date }[] }
+    return await this.helperService.appRequest('me', 'get') as { _id: number, email: string, verified: boolean, refreshTokens: { _id: string, ip: string, userAgent?: string, date: Date }[] }
   }
 
   async revokeLogin(tokenId: string) {
-    await this.http.delete(`${environment.apiURL}/me/logins/${tokenId}`)
+    await this.helperService.appRequest(`me/logins/${tokenId}`, 'delete')
   }
 
+  // Change the password (if successful, optionally ask to invalidate all existing refresh tokens and also accept a new one to replace the current invalid one)
   async changePassword(password: string, newPassword: string, revokeRefreshTokens: boolean = false) {
-    const res = await this.http.put(`${environment.apiURL}/me/password`, { password, newPassword, revokeRefreshTokens }).toPromise() as any
+    const result = await this.helperService.appRequest('me/password', 'put', { password, newPassword, revokeRefreshTokens })
     if (revokeRefreshTokens)
-      if (res?.refreshToken)
-        this.refreshToken = res.refreshToken
+      if (result?.refreshToken)
+        this.refreshToken = result.refreshToken
       else this.logout()
   }
 
   async changeEmail(password: string, email: string) {
-    await this.http.put(`${environment.apiURL}/me/email`, { password, email, clientVerificationURL: `${this.currentURLBase}/verify-email` }).toPromise()
+    await this.helperService.appRequest('me/email', 'put', { password, email, clientVerificationURL: `${this.currentURLBase}/verify-email` })
   }
 
   // Used by the router to check if protected routes should be accessible
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    this.router.navigate(['/welcome'])
+    if (!this.isLoggedIn.value) this.router.navigate(['/welcome'])
     return this.isLoggedIn.value
   }
 }

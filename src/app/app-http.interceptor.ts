@@ -4,11 +4,10 @@ import {
   HttpHandler,
   HttpEvent,
   HttpInterceptor,
-  HttpResponse,
   HttpErrorResponse
 } from '@angular/common/http'
 import { BehaviorSubject, Observable, throwError } from 'rxjs'
-import { catchError, filter, map, switchMap, take } from 'rxjs/operators'
+import { catchError, filter, switchMap, take } from 'rxjs/operators'
 import { UserService } from './services/user.service'
 import { environment } from 'src/environments/environment'
 
@@ -33,7 +32,7 @@ export class AppHttpInterceptor implements HttpInterceptor {
       if (error instanceof HttpErrorResponse && authReq.url.includes(`${environment.apiURL}/token`) && error.status === 401)
         return this.handleExpiredTokenError(authReq, next)
 
-      return throwError(error)
+      return throwError(() => error)
     }))
   }
 
@@ -60,7 +59,7 @@ export class AppHttpInterceptor implements HttpInterceptor {
           catchError((err) => {
             this.isRefreshing = false
             this.userService.logout()
-            return throwError(err)
+            return throwError(() => err)
           })
         )
     }
