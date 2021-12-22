@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
 import { BehaviorSubject, lastValueFrom, Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
 import { HelperService } from './helper.service';
 
 @Injectable({
@@ -12,7 +11,9 @@ export class UserService {
   // Observable that can be used by anything that needs to know the logged in state
   isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false)
 
-  constructor(private router: Router, private helperService: HelperService) { }
+  constructor(private router: Router, private helperService: HelperService) {
+    if (this.refreshToken.length > 0) this.isLoggedIn.next(true)
+  }
 
   // Getters and setters for access and refresh tokens
   set accessToken(token: string) {
@@ -36,7 +37,7 @@ export class UserService {
     this.accessToken = ''
     this.refreshToken = ''
     this.isLoggedIn.next(false)
-    this.router.navigate(['/'])
+    this.router.navigate(['/welcome'])
   }
 
   // Get the current URL (only base part)
@@ -47,6 +48,8 @@ export class UserService {
     const result = await this.helperService.appRequest('login', 'post', { email, password }) as { token: string, refreshToken: string }
     this.accessToken = result.token
     this.refreshToken = result.refreshToken
+    this.isLoggedIn.next(true)
+    this.router.navigate(['/'])
   }
 
   async signUp(email: string, password: string) {
@@ -61,8 +64,8 @@ export class UserService {
     await this.helperService.appRequest('request-password-reset', 'post', { email, clientVerificationURL: `${this.currentURLBase}/reset-password` })
   }
 
-  async resetPassword(passwordResetToken: string, newPassword: string) {
-    await this.helperService.appRequest('reset-password', 'post', { passwordResetToken, newPassword })
+  async resetPassword(passwordResetToken: string, password: string) {
+    await this.helperService.appRequest('reset-password', 'post', { passwordResetToken, password })
   }
 
   async me() {
@@ -88,7 +91,7 @@ export class UserService {
 
   // Used by the router to check if protected routes should be accessible
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    this.router.navigate(['/welcome'])
+    if (!this.isLoggedIn.value) this.router.navigate(['/welcome'])
     return this.isLoggedIn.value
   }
 }

@@ -12,34 +12,31 @@ import { UserService } from 'src/app/services/user.service';
 export class WelcomeComponent implements OnInit {
 
   loginForm = new FormGroup({
-    email: new FormControl('', Validators.required),
+    email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', Validators.required)
   });
 
   registerForm = new FormGroup({
-    email: new FormControl('', Validators.required),
+    email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', Validators.required),
     passwordConfirm: new FormControl('', Validators.required)
   });
 
   resetPasswordForm = new FormGroup({
-    email: new FormControl('', Validators.required),
-    password: new FormControl('', Validators.required),
-    passwordConfirm: new FormControl('', Validators.required)
+    email: new FormControl('', [Validators.required, Validators.email])
   });
 
   loading: boolean = false;
 
   constructor(private helperService: HelperService, private userService: UserService, private router: Router) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    if (this.userService.isLoggedIn) this.router.navigate(['/'])
+  }
 
   login() {
     this.loading = true;
-    this.userService.login(this.loginForm.controls['email'].value, this.loginForm.controls['password'].value).then(() => {
-      this.loading = false;
-      this.router.navigate(['/home'])
-    }).catch((err: any) => {
+    this.userService.login(this.loginForm.controls['email'].value, this.loginForm.controls['password'].value).finally(() => {
       this.loading = false;
     })
   }
@@ -66,14 +63,14 @@ export class WelcomeComponent implements OnInit {
 
   resetPassword() {
     if (this.resetPasswordForm.valid) {
-        this.loading = true;
-        this.userService.requestPasswordReset(this.resetPasswordForm.controls['email'].value).then(() => {
-          this.loading = false;
-          this.resetPasswordForm.reset();
-          this.helperService.showSimpleSnackBar('A password reset link has been emailed to you')
-        }).catch((err) => {
-          this.loading = false;
-        })
+      this.loading = true;
+      this.userService.requestPasswordReset(this.resetPasswordForm.controls['email'].value).then(() => {
+        this.loading = false;
+        this.resetPasswordForm.reset();
+        this.helperService.showSimpleSnackBar('A password reset link has been emailed to you')
+      }).catch((err) => {
+        this.loading = false;
+      })
     } else {
       this.helperService.showSimpleSnackBar('Please fill all fields and provide a valid password');
     }

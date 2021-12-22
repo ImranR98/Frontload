@@ -27,7 +27,7 @@ export class HelperService {
 
     //Since Backend Server routes all 404 requests to the Frontend, this will be seen as a 200 response with HTML body
     if (error instanceof HttpErrorResponse) {
-      if (typeof error.message === 'string') standardError.message = error.message
+      if (typeof error?.error?.message === 'string') standardError.message = error.error.message
       else standardError.message = error.statusText
     }
     if (typeof error == 'string') {

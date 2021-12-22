@@ -22,6 +22,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.subscriptions.forEach(sub => sub.unsubscribe())
   }
 
-  logout = this.userService.logout
+  logout(): void {
+    this.userService.logout()
+  }
 
 }
