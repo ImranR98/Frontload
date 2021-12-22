@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { HelperService } from 'src/app/services/helper.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -29,7 +30,7 @@ export class WelcomeComponent implements OnInit {
 
   loading: boolean = false;
 
-  constructor(private errorService: HelperService, private userService: UserService) { }
+  constructor(private helperService: HelperService, private userService: UserService, private router: Router) { }
 
   ngOnInit() { }
 
@@ -37,6 +38,7 @@ export class WelcomeComponent implements OnInit {
     this.loading = true;
     this.userService.login(this.loginForm.controls['email'].value, this.loginForm.controls['password'].value).then(() => {
       this.loading = false;
+      this.router.navigate(['/home'])
     }).catch((err: any) => {
       this.loading = false;
     })
@@ -49,14 +51,15 @@ export class WelcomeComponent implements OnInit {
         this.userService.signUp(this.registerForm.controls['email'].value, this.registerForm.controls['password'].value).then(() => {
           this.loading = false;
           this.registerForm.reset();
+          this.helperService.showSimpleSnackBar('A verification link has been emailed to you')
         }).catch((err) => {
           this.loading = false;
         })
       } else {
-        this.errorService.showSimpleSnackBar('Passwords do not match');
+        this.helperService.showSimpleSnackBar('Passwords do not match');
       }
     } else {
-      this.errorService.showSimpleSnackBar('Please fill all fields and provide a valid password');
+      this.helperService.showSimpleSnackBar('Please fill all fields and provide a valid password');
     }
 
   }
@@ -67,11 +70,12 @@ export class WelcomeComponent implements OnInit {
         this.userService.requestPasswordReset(this.resetPasswordForm.controls['email'].value).then(() => {
           this.loading = false;
           this.resetPasswordForm.reset();
+          this.helperService.showSimpleSnackBar('A password reset link has been emailed to you')
         }).catch((err) => {
           this.loading = false;
         })
     } else {
-      this.errorService.showSimpleSnackBar('Please fill all fields and provide a valid password');
+      this.helperService.showSimpleSnackBar('Please fill all fields and provide a valid password');
     }
 
   }

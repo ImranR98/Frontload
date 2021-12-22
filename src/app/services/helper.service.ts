@@ -27,25 +27,12 @@ export class HelperService {
 
     //Since Backend Server routes all 404 requests to the Frontend, this will be seen as a 200 response with HTML body
     if (error instanceof HttpErrorResponse) {
-      if (error.status == 200 || error.status == 404) {
-        standardError.message = '404 - Not Found'
-      } else {
-        if (typeof error.error == 'string') {
-          if (error.error.indexOf('<!DOCTYPE html') == -1) {
-            standardError.message = error.error;
-          } else {
-            standardError.message = error.statusText;
-          }
-        } else {
-          standardError.message = error.statusText;
-        }
-      }
+      if (typeof error.message === 'string') standardError.message = error.message
+      else standardError.message = error.statusText
     }
-
     if (typeof error == 'string') {
       standardError.message = error;
     }
-
     return standardError;
   }
 
