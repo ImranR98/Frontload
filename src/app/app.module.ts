@@ -22,7 +22,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
-import { ResetPasswordComponent } from './components/reset-password/reset-password.component'
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { AccountComponent } from './components/account/account.component'
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
     WelcomeComponent,
     NavbarComponent,
     VerifyEmailComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +51,8 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
     MatTabsModule,
     MatSnackBarModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    CommonModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

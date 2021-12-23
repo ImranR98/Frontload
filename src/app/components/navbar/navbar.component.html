@@ -7,6 +7,7 @@
             <div fxLayout="row" fxLayoutGap="1em" fxLayoutAlign="default center" fxHide fxShow.sm fxShow.gt-sm>
                 <button mat-button routerLinkActive="active" routerLink="/" *ngIf="isLoggedIn">Home</button>
                 <button mat-button routerLinkActive="active" routerLink="/welcome" *ngIf="!isLoggedIn">Welcome</button>
+                <button mat-button routerLinkActive="active" routerLink="/account" *ngIf="isLoggedIn">Account</button>
                 <button mat-button (click)="logout()" *ngIf="isLoggedIn">Logout</button>
             </div>
 
@@ -20,7 +21,11 @@
                     aria-label="Button that takes you to the Welcome page">
                     <mat-icon>login</mat-icon>
                 </button>
-                <button mat-icon-button routerLinkActive="active" (click)="logout()" *ngIf="isLoggedIn"
+                <button mat-icon-button routerLinkActive="active" routerLink="/account" *ngIf="isLoggedIn"
+                    [matTooltipShowDelay]="1500" matTooltip="Account" aria-label="Button that takes you to your account settings page">
+                    <mat-icon>account_circle</mat-icon>
+                </button>
+                <button mat-icon-button (click)="logout()" *ngIf="isLoggedIn"
                     [matTooltipShowDelay]="1500" matTooltip="Logout" aria-label="Button that logs you out">
                     <mat-icon>logout</mat-icon>
                 </button>

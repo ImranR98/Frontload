@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
 import { BehaviorSubject, lastValueFrom, Observable } from 'rxjs';
+import { ServerUserInterface } from '../models/user.models';
 import { HelperService } from './helper.service';
 
 @Injectable({
@@ -69,7 +70,7 @@ export class UserService {
   }
 
   async me() {
-    return await this.helperService.appRequest('me', 'get') as { _id: number, email: string, verified: boolean, refreshTokens: { _id: string, ip: string, userAgent?: string, date: Date }[] }
+    return await this.helperService.appRequest('me', 'get') as ServerUserInterface
   }
 
   async revokeLogin(tokenId: string) {

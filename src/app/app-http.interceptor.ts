@@ -10,6 +10,7 @@ import { BehaviorSubject, Observable, throwError } from 'rxjs'
 import { catchError, filter, switchMap, take } from 'rxjs/operators'
 import { UserService } from './services/user.service'
 import { environment } from 'src/environments/environment'
+import { isServerError } from './models/error.models'
 
 @Injectable()
 export class AppHttpInterceptor implements HttpInterceptor {
@@ -29,8 +30,10 @@ export class AppHttpInterceptor implements HttpInterceptor {
 
     // Response intercept: If it is an expired access token error, do custom error handling, else throw to be handled elsewhere
     return next.handle(authReq).pipe(catchError(error => {
-      if (error instanceof HttpErrorResponse && authReq.url.includes(`${environment.apiURL}/token`) && error.status === 401)
+      if (error instanceof HttpErrorResponse && isServerError(error.error) && error.error.code === 'INVALID_ACCESS_TOKEN') {
         return this.handleExpiredTokenError(authReq, next)
+      }
+      // if (error instanceof HttpErrorResponse && authReq.url.includes(`${environment.apiURL}/token`) && error.status === 401)
 
       return throwError(() => error)
     }))

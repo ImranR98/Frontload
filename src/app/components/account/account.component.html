@@ -1,0 +1,10 @@
+<div *ngIf="me">
+    <p><b>Email: </b>{{me.email}}</p>
+    <p>Logins: </p>
+    <ul>
+        <li *ngFor="let login of me.refreshTokens">
+            {{login.date}}<small> - {{login.ip}} - {{login.userAgent}}</small>
+        </li>
+    </ul>
+</div>
+<p *ngIf="!me">Loading...</p>
