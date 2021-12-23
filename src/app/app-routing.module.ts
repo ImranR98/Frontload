@@ -6,6 +6,8 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { AccountComponent } from './components/account/account.component';
+import { ChangeEmailComponent } from './components/change-email/change-email.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
 
 const routes: Routes = [
   {
@@ -29,6 +31,16 @@ const routes: Routes = [
   {
     path: 'account',
     component: AccountComponent,
+    canActivate: [UserService]
+  },
+  {
+    path: 'change-email',
+    component: ChangeEmailComponent,
+    canActivate: [UserService]
+  },
+  {
+    path: 'change-password',
+    component: ChangePasswordComponent,
     canActivate: [UserService]
   },
   {

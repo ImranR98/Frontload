@@ -1,0 +1,17 @@
+<h1>Change Email</h1>
+<form [formGroup]="changeEmailForm" (ngSubmit)="changeEmail()" fxLayout="column" fxLayoutAlign="start">
+    <div fxLayout="row">
+        <mat-form-field fxFlex.lt-sm="100%">
+            <input matInput formControlName="email" placeholder="New Email" type="email" required>
+        </mat-form-field>
+    </div>
+    <div fxLayout="row">
+        <mat-form-field fxFlex.lt-sm="100%">
+            <input matInput formControlName="password" placeholder="Current Password" type="password" required>
+        </mat-form-field>
+    </div>
+    <div fxLayout="row">
+        <button mat-raised-button type="submit" color="primary" [disabled]="loading || !changeEmailForm.valid">Change
+            Email</button>
+    </div>
+</form>

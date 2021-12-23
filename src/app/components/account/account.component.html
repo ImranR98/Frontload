@@ -1,6 +1,12 @@
-<div *ngIf="me">
-    <p><b>Email: </b>{{me.email}}</p>
-    <p>Logins: </p>
+<h1>Account</h1>
+<div *ngIf="me" fxLayout="column" fxLayoutGap="1em">
+    <p>{{me.email}}</p>
+    <div fxLayout="row" fxLayoutGap="1em" fxLayout.lt-md="column">
+        <button mat-raised-button routerLink="/change-email" color="primary">Change Email</button>
+        <button mat-raised-button routerLink="/change-password" color="primary">Change Password</button>
+    </div>
+    <mat-divider></mat-divider>
+    <h2>Logins</h2>
     <ul>
         <li *ngFor="let login of me.refreshTokens">
             {{login.date}}<small> - {{login.ip}} - {{login.userAgent}}</small>

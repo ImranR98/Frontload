@@ -25,6 +25,10 @@ import { VerifyEmailComponent } from './components/verify-email/verify-email.com
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { AccountComponent } from './components/account/account.component'
 import { CommonModule } from '@angular/common';
+import { ChangeEmailComponent } from './components/change-email/change-email.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { MatCheckboxModule } from '@angular/material/checkbox'
+import { MatDividerModule } from '@angular/material/divider'
 
 @NgModule({
   declarations: [
@@ -34,7 +38,9 @@ import { CommonModule } from '@angular/common';
     NavbarComponent,
     VerifyEmailComponent,
     ResetPasswordComponent,
-    AccountComponent
+    AccountComponent,
+    ChangeEmailComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +58,9 @@ import { CommonModule } from '@angular/common';
     MatSnackBarModule,
     MatFormFieldModule,
     MatInputModule,
-    CommonModule
+    CommonModule,
+    MatCheckboxModule,
+    MatDividerModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
