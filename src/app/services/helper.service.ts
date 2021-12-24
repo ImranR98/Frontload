@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { AppErrorInterface, AppError } from '../models/error.models';
+import { AppErrorInterface, AppError, isServerError, serverErrors } from '../models/error.models';
 import { environment } from 'src/environments/environment';
 import { HttpErrorResponse } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
@@ -25,14 +25,17 @@ export class HelperService {
   standardizeError(error: any, actionable: boolean = false) {
     let standardError: AppErrorInterface = new AppError(actionable);
 
-    //Since Backend Server routes all 404 requests to the Frontend, this will be seen as a 200 response with HTML body
-    if (error instanceof HttpErrorResponse) {
-      if (typeof error?.error?.message === 'string') standardError.message = error.error.message
-      else standardError.message = error.statusText
-    }
-    if (typeof error == 'string') {
+    if (error instanceof HttpErrorResponse && error.error) error = error.error
+
+    if (isServerError(error))
+      standardError.message = serverErrors[error.code]
+
+    if (error instanceof HttpErrorResponse)
+      standardError.message = error.statusText
+
+    if (typeof error == 'string')
       standardError.message = error;
-    }
+
     return standardError;
   }
 
