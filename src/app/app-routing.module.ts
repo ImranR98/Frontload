@@ -1,24 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './components/home/home.component';
+import { HomeComponent } from './pages/home/home.component';
 import { UserService } from './services/user.service';
-import { WelcomeComponent } from './components/welcome/welcome.component';
-import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
-import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
-import { AccountComponent } from './components/account/account.component';
-import { ChangeEmailComponent } from './components/change-email/change-email.component';
-import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { VerifyEmailComponent } from './pages/verify-email/verify-email.component';
+import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
+import { AccountComponent } from './pages/account/account.component';
+import { ChangeEmailComponent } from './pages/change-email/change-email.component';
+import { ChangePasswordComponent } from './pages/change-password/change-password.component';
 
 const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
     pathMatch: 'full',
-    canActivate: [UserService]
-  },
-  {
-    path: 'welcome',
-    component: WelcomeComponent,
   },
   {
     path: 'verify-email',

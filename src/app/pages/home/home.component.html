@@ -1,0 +1,17 @@
+<h1>Home</h1>
+<div *ngIf="isLoggedIn">
+
+</div>
+<div *ngIf="!isLoggedIn">
+    <mat-tab-group>
+        <mat-tab label="Login">
+            <app-login class="stdMargin"></app-login>
+        </mat-tab>
+        <mat-tab label="Register">
+            <app-register class="stdMargin"></app-register>
+        </mat-tab>
+        <mat-tab label="Forgot Password">
+            <app-forgot-password class="stdMargin"></app-forgot-password>
+        </mat-tab>
+    </mat-tab-group>
+</div>

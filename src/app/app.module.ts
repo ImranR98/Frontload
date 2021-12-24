@@ -8,8 +8,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppHttpInterceptor } from './app-http.interceptor';
-import { HomeComponent } from './components/home/home.component';
-import { WelcomeComponent } from './components/welcome/welcome.component';
+import { HomeComponent } from './pages/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 
 import { MatToolbarModule } from '@angular/material/toolbar'
@@ -21,28 +20,33 @@ import { MatTabsModule } from '@angular/material/tabs'
 import { MatSnackBarModule } from '@angular/material/snack-bar'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input';
-import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
-import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
-import { AccountComponent } from './components/account/account.component'
+import { VerifyEmailComponent } from './pages/verify-email/verify-email.component';
+import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
+import { AccountComponent } from './pages/account/account.component'
 import { CommonModule } from '@angular/common';
-import { ChangeEmailComponent } from './components/change-email/change-email.component';
-import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { ChangeEmailComponent } from './pages/change-email/change-email.component';
+import { ChangePasswordComponent } from './pages/change-password/change-password.component';
 import { MatCheckboxModule } from '@angular/material/checkbox'
 import { MatDividerModule } from '@angular/material/divider'
 import { MatCardModule } from '@angular/material/card'
-import { MatGridListModule } from '@angular/material/grid-list'
+import { MatGridListModule } from '@angular/material/grid-list';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    WelcomeComponent,
     NavbarComponent,
     VerifyEmailComponent,
     ResetPasswordComponent,
     AccountComponent,
     ChangeEmailComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    LoginComponent,
+    RegisterComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
