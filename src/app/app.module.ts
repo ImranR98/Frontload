@@ -29,6 +29,8 @@ import { ChangeEmailComponent } from './components/change-email/change-email.com
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { MatCheckboxModule } from '@angular/material/checkbox'
 import { MatDividerModule } from '@angular/material/divider'
+import { MatCardModule } from '@angular/material/card'
+import { MatGridListModule } from '@angular/material/grid-list'
 
 @NgModule({
   declarations: [
@@ -60,7 +62,9 @@ import { MatDividerModule } from '@angular/material/divider'
     MatInputModule,
     CommonModule,
     MatCheckboxModule,
-    MatDividerModule
+    MatDividerModule,
+    MatCardModule,
+    MatGridListModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

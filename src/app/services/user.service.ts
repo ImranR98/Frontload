@@ -75,6 +75,7 @@ export class UserService {
 
   async revokeLogin(tokenId: string) {
     await this.helperService.appRequest(`me/logins/${tokenId}`, 'delete')
+    this.accessToken = 'abc' // If the user revoked the currently used token, make sure they get logged out on next request
   }
 
   // Change the password (if successful, optionally ask to invalidate all existing refresh tokens and also accept a new one to replace the current invalid one)

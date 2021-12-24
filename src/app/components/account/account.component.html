@@ -2,15 +2,18 @@
 <div *ngIf="me" fxLayout="column" fxLayoutGap="1em">
     <p>{{me.email}}</p>
     <div fxLayout="row" fxLayoutGap="1em" fxLayout.lt-md="column">
-        <button mat-raised-button routerLink="/change-email" color="primary">Change Email</button>
-        <button mat-raised-button routerLink="/change-password" color="primary">Change Password</button>
+        <button mat-raised-button routerLink="/change-email" color="primary" [disabled]="loading">Change Email</button>
+        <button mat-raised-button routerLink="/change-password" color="primary" [disabled]="loading">Change Password</button>
     </div>
     <mat-divider></mat-divider>
     <h2>Logins</h2>
-    <ul>
-        <li *ngFor="let login of me.refreshTokens">
-            {{login.date}}<small> - {{login.ip}} - {{login.userAgent}}</small>
-        </li>
-    </ul>
+    <mat-card *ngFor="let login of me.refreshTokens" fxLayout="column">
+        <small><b>Date: </b>{{login.date}}</small>
+        <small><b>IP: </b>{{login.ip}}</small>
+        <small><b>Details: </b>{{login.userAgent}}</small>
+        <mat-card-actions>
+            <button mat-button color="warn" (click)="revokeLogin(login._id)" [disabled]="loading">Revoke</button>
+        </mat-card-actions>
+    </mat-card>
 </div>
 <p *ngIf="!me">Loading...</p>

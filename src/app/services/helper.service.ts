@@ -66,7 +66,7 @@ export class HelperService {
     this.snackBar.dismiss();
   }
 
-  plainRequest = (uri: string, method: 'get' | 'delete' | 'post' | 'put', data: any = null) => method == 'get' || method == 'delete' ? this.http.get(`${environment.apiURL}/${uri}`) : this.http[method](`${environment.apiURL}/${uri}`, data)
+  plainRequest = (uri: string, method: 'get' | 'delete' | 'post' | 'put', data: any = null) => method == 'get' || method == 'delete' ? this.http[method](`${environment.apiURL}/${uri}`) : this.http[method](`${environment.apiURL}/${uri}`, data)
 
   appRequest(uri: string, method: 'get' | 'delete' | 'post' | 'put', data: any = null, showError: boolean = true) {
     return new Promise<any>((resolve, reject) => {
