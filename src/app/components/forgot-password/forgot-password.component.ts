@@ -29,12 +29,12 @@ export class ForgotPasswordComponent implements OnInit {
       this.userService.requestPasswordReset(this.resetPasswordForm.controls['email'].value).then(() => {
         this.loading = false;
         this.resetPasswordForm.reset();
-        this.toastService.showToast('A password reset link has been emailed to you')
+        this.toastService.showToast('A password reset link has been emailed to you', 'success')
       }).catch((err) => {
         this.loading = false;
       })
     } else {
-      this.toastService.showToast('Please fill all fields and provide a valid password');
+      this.toastService.showToast('Please fill all fields and provide a valid password', 'danger');
     }
 
   }

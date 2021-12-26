@@ -26,7 +26,7 @@ export class ResetPasswordComponent implements OnInit {
       if (params['passwordResetToken']) {
         this.passwordResetToken = params['passwordResetToken']
       } else {
-        this.toastService.showToast('No reset token provided')
+        this.toastService.showToast('No reset token provided', 'danger')
         this.router.navigate(['/'])
       }
     })
@@ -38,16 +38,16 @@ export class ResetPasswordComponent implements OnInit {
         this.loading = true;
         this.userService.resetPassword(this.passwordResetToken, this.resetPasswordForm.controls['password'].value).then(() => {
           this.loading = false;
-          this.toastService.showToast('Your password has been reset')
+          this.toastService.showToast('Your password has been reset', 'success')
           this.router.navigate(['/'])
         }).catch((err) => {
           this.loading = false;
         })
       } else {
-        this.toastService.showToast('Passwords do not match');
+        this.toastService.showToast('Passwords do not match', 'danger');
       }
     } else {
-      this.toastService.showToast('Please fill all fields and provide a valid password');
+      this.toastService.showToast('Please fill all fields and provide a valid password', 'danger');
     }
   }
 }

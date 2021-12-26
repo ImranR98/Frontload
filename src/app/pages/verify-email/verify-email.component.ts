@@ -22,7 +22,7 @@ export class VerifyEmailComponent implements OnInit {
           this.router.navigate(['/'])
         })
       } else {
-        this.toastService.showToast('No verification token provided')
+        this.toastService.showToast('No verification token provided', 'danger')
         this.router.navigate(['/'])
       }
     })

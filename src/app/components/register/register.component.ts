@@ -32,15 +32,15 @@ export class RegisterComponent implements OnInit {
         this.userService.signUp(this.registerForm.controls['email'].value, this.registerForm.controls['password'].value).then(() => {
           this.loading = false;
           this.registerForm.reset();
-          this.toastService.showToast('A verification link has been emailed to you')
+          this.toastService.showToast('A verification link has been emailed to you', 'success')
         }).catch((err) => {
           this.loading = false;
         })
       } else {
-        this.toastService.showToast('Passwords do not match');
+        this.toastService.showToast('Passwords do not match', 'danger');
       }
     } else {
-      this.toastService.showToast('Please fill all fields and provide a valid password');
+      this.toastService.showToast('Please fill all fields and provide a valid password', 'danger');
     }
 
   }

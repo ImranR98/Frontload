@@ -18,7 +18,6 @@ export class AccountComponent implements OnInit {
 
   ngOnInit(): void {
     this.getMe()
-    this.toastService.showToast('Title', 'Body')
   }
 
   getMe() {

@@ -33,6 +33,6 @@ export class ErrorService {
       console.log(error);
     }
     error = this.standardizeError(error, false);
-    this.toastService.showToast('Error', error.message)
+    this.toastService.showToast(error.message, 'danger')
   }
 }

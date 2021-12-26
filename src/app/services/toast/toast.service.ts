@@ -7,10 +7,10 @@ export class ToastService {
 
   constructor() { }
 
-  toasts: any[] = [];
+  toasts: { message: string, className: string, delay: number }[] = [];
 
-  showToast(message: string, title: string = "Info") {
-    this.toasts.push({ title, message });
+  showToast(message: string, type: 'info' | 'success' | 'danger' = 'info', delay: number = 5000) {
+    this.toasts.push({ message, className: `bg-${type} text-light`, delay });
   }
 
   removeToast(toast: any) {
