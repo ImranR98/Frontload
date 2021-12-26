@@ -17,9 +17,8 @@
             <ng-template ngbPanelContent>
                 <div class="card mb-3" *ngFor="let login of me?.refreshTokens">
                     <div class="card-body">
-                        <h5 class="card-title">{{login.date}}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">{{login.ip}}</h6>
-                        <p class="card-text">{{login.userAgent}}</p>
+                        <h5 class="card-title">{{formatUAString(login.userAgent)}}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{login.date | date: 'medium' }}</h6>
                         <button type="button" class="btn btn-danger" (click)="revokeLogin(login._id)"
                             [disabled]="loading">Revoke Login</button>
                     </div>

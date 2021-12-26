@@ -21,6 +21,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastComponent } from './components/toast/toast.component';
+import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { ToastComponent } from './components/toast/toast.component';
     LoginComponent,
     RegisterComponent,
     ForgotPasswordComponent,
-    ToastComponent
+    ToastComponent,
+    ConfirmModalComponent
   ],
   imports: [
     BrowserModule,
