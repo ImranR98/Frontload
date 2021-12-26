@@ -8,8 +8,7 @@ import {
 } from '@angular/common/http'
 import { BehaviorSubject, Observable, throwError } from 'rxjs'
 import { catchError, filter, switchMap, take } from 'rxjs/operators'
-import { UserService } from './services/user.service'
-import { environment } from 'src/environments/environment'
+import { UserService } from './services/user/user.service'
 import { isServerError } from './models/error.models'
 
 @Injectable()

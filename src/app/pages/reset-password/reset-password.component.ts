@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { HelperService } from 'src/app/services/helper.service';
-import { UserService } from 'src/app/services/user.service';
+import { ToastService } from 'src/app/services/toast/toast.service';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-reset-password',
@@ -14,7 +14,7 @@ export class ResetPasswordComponent implements OnInit {
   loading: boolean = false
   passwordResetToken: string = ''
 
-  constructor(private helperService: HelperService, private userService: UserService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private toastService: ToastService, private userService: UserService, private route: ActivatedRoute, private router: Router) { }
 
   resetPasswordForm = new FormGroup({
     password: new FormControl('', Validators.required),
@@ -26,7 +26,7 @@ export class ResetPasswordComponent implements OnInit {
       if (params['passwordResetToken']) {
         this.passwordResetToken = params['passwordResetToken']
       } else {
-        this.helperService.showSimpleSnackBar('No reset token provided')
+        this.toastService.showToast('No reset token provided')
         this.router.navigate(['/'])
       }
     })
@@ -38,16 +38,16 @@ export class ResetPasswordComponent implements OnInit {
         this.loading = true;
         this.userService.resetPassword(this.passwordResetToken, this.resetPasswordForm.controls['password'].value).then(() => {
           this.loading = false;
-          this.helperService.showSimpleSnackBar('Your password has been reset')
+          this.toastService.showToast('Your password has been reset')
           this.router.navigate(['/'])
         }).catch((err) => {
           this.loading = false;
         })
       } else {
-        this.helperService.showSimpleSnackBar('Passwords do not match');
+        this.toastService.showToast('Passwords do not match');
       }
     } else {
-      this.helperService.showSimpleSnackBar('Please fill all fields and provide a valid password');
+      this.toastService.showToast('Please fill all fields and provide a valid password');
     }
   }
 }

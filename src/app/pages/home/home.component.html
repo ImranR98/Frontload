@@ -1,17 +1,26 @@
-<h1>Home</h1>
 <div *ngIf="isLoggedIn">
-
+    <p>Welcome!</p>
 </div>
 <div *ngIf="!isLoggedIn">
-    <mat-tab-group>
-        <mat-tab label="Login">
-            <app-login class="stdMargin"></app-login>
-        </mat-tab>
-        <mat-tab label="Register">
-            <app-register class="stdMargin"></app-register>
-        </mat-tab>
-        <mat-tab label="Forgot Password">
-            <app-forgot-password class="stdMargin"></app-forgot-password>
-        </mat-tab>
-    </mat-tab-group>
+    <ul ngbNav #nav="ngbNav" class="nav-tabs mt-3 mb-3">
+        <li ngbNavItem>
+            <a ngbNavLink>Sign In</a>
+            <ng-template ngbNavContent>
+                <app-login></app-login>
+            </ng-template>
+        </li>
+        <li ngbNavItem>
+            <a ngbNavLink>Sign Up</a>
+            <ng-template ngbNavContent>
+                <app-register></app-register>
+            </ng-template>
+        </li>
+        <li ngbNavItem>
+            <a ngbNavLink>Reset Password</a>
+            <ng-template ngbNavContent>
+                <app-forgot-password></app-forgot-password>
+            </ng-template>
+        </li>
+    </ul>
+    <div [ngbNavOutlet]="nav"></div>
 </div>

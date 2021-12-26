@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
-import { BehaviorSubject, lastValueFrom, Observable } from 'rxjs';
-import { ServerUserInterface } from '../models/user.models';
-import { HelperService } from './helper.service';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { ServerUserInterface } from '../../models/user.models';
+import { RequestService } from '../request/request.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class UserService {
   // Observable that can be used by anything that needs to know the logged in state
   isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false)
 
-  constructor(private router: Router, private helperService: HelperService) {
+  constructor(private router: Router, private requestService: RequestService) {
     if (this.refreshToken.length > 0) this.isLoggedIn.next(true)
   }
 
@@ -31,7 +31,7 @@ export class UserService {
   }
 
   // Make HTTP request to refresh the access token; used by the HTTP interceptor
-  refreshAccessToken() { return this.helperService.plainRequest('token', 'post', { refreshToken: this.refreshToken }) }
+  refreshAccessToken() { return this.requestService.plainRequest('token', 'post', { refreshToken: this.refreshToken }) }
 
   // Used on manual logout or when HTTP interceptor fails to refresh access token
   logout() {
@@ -46,7 +46,7 @@ export class UserService {
 
   // Make login request and save tokens if successful
   async login(email: string, password: string) {
-    const result = await this.helperService.appRequest('login', 'post', { email, password }) as { token: string, refreshToken: string }
+    const result = await this.requestService.appRequest('login', 'post', { email, password }) as { token: string, refreshToken: string }
     this.accessToken = result.token
     this.refreshToken = result.refreshToken
     this.isLoggedIn.next(true)
@@ -54,33 +54,33 @@ export class UserService {
   }
 
   async signUp(email: string, password: string) {
-    await this.helperService.appRequest('signup', 'post', { email, password, clientVerificationURL: `${this.currentURLBase}/verify-email` })
+    await this.requestService.appRequest('signup', 'post', { email, password, clientVerificationURL: `${this.currentURLBase}/verify-email` })
   }
 
   async verifyEmail(emailVerificationToken: string) {
-    await this.helperService.appRequest('verify-email', 'post', { emailVerificationToken })
+    await this.requestService.appRequest('verify-email', 'post', { emailVerificationToken })
   }
 
   async requestPasswordReset(email: string) {
-    await this.helperService.appRequest('request-password-reset', 'post', { email, clientVerificationURL: `${this.currentURLBase}/reset-password` })
+    await this.requestService.appRequest('request-password-reset', 'post', { email, clientVerificationURL: `${this.currentURLBase}/reset-password` })
   }
 
   async resetPassword(passwordResetToken: string, password: string) {
-    await this.helperService.appRequest('reset-password', 'post', { passwordResetToken, password })
+    await this.requestService.appRequest('reset-password', 'post', { passwordResetToken, password })
   }
 
   async me() {
-    return await this.helperService.appRequest('me', 'get') as ServerUserInterface
+    return await this.requestService.appRequest('me', 'get') as ServerUserInterface
   }
 
   async revokeLogin(tokenId: string) {
-    await this.helperService.appRequest(`me/logins/${tokenId}`, 'delete')
+    await this.requestService.appRequest(`me/logins/${tokenId}`, 'delete')
     this.accessToken = 'abc' // If the user revoked the currently used token, make sure they get logged out on next request
   }
 
   // Change the password (if successful, optionally ask to invalidate all existing refresh tokens and also accept a new one to replace the current invalid one)
   async changePassword(password: string, newPassword: string, revokeRefreshTokens: boolean = false) {
-    const result = await this.helperService.appRequest('me/password', 'put', { password, newPassword, revokeRefreshTokens })
+    const result = await this.requestService.appRequest('me/password', 'put', { password, newPassword, revokeRefreshTokens })
     if (revokeRefreshTokens)
       if (result?.refreshToken)
         this.refreshToken = result.refreshToken
@@ -88,7 +88,7 @@ export class UserService {
   }
 
   async changeEmail(password: string, email: string) {
-    await this.helperService.appRequest('me/email', 'put', { password, email, clientVerificationURL: `${this.currentURLBase}/verify-email` })
+    await this.requestService.appRequest('me/email', 'put', { password, email, clientVerificationURL: `${this.currentURLBase}/verify-email` })
   }
 
   // Used by the router to check if protected routes should be accessible

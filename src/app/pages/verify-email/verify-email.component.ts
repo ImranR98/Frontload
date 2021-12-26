@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { HelperService } from 'src/app/services/helper.service';
-import { UserService } from 'src/app/services/user.service';
+import { ToastService } from 'src/app/services/toast/toast.service';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-verify-email',
@@ -11,7 +11,7 @@ import { UserService } from 'src/app/services/user.service';
 export class VerifyEmailComponent implements OnInit {
   verified: boolean = false
 
-  constructor(private helperService: HelperService, private userService: UserService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private toastService: ToastService, private userService: UserService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
@@ -22,7 +22,7 @@ export class VerifyEmailComponent implements OnInit {
           this.router.navigate(['/'])
         })
       } else {
-        this.helperService.showSimpleSnackBar('No verification token provided')
+        this.toastService.showToast('No verification token provided')
         this.router.navigate(['/'])
       }
     })

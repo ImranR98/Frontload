@@ -1,22 +1,14 @@
-<form [formGroup]="registerForm" (ngSubmit)="register()" fxLayout="column" fxLayoutAlign="start">
-    <div fxLayout="row">
-        <mat-form-field fxFlex.lt-sm="100%">
-            <input matInput formControlName="email" placeholder="Email" type="email" required>
-        </mat-form-field>
+<form [formGroup]="registerForm" (ngSubmit)="register()">
+    <div class="form-group">
+        <input formControlName="email" type="email" class="form-control" placeholder="Email" required>
     </div>
-    <div fxLayout="row">
-        <mat-form-field fxFlex.lt-sm="100%">
-            <input matInput formControlName="password" placeholder="Password" type="password" required>
-        </mat-form-field>
+    <div class="form-group">
+        <input formControlName="password" type="password" class="form-control" placeholder="Password" aria-describedby="passwordHelp" required>
+        <small id="passwordHelp" class="form-text text-muted">Minimum 6 characters.</small>
+        <!-- TODO: Programatically ensure pass reqs are met, and line up with server, and extract this field to passwordComponent and add to other pages (changePass, resetPass)-->
     </div>
-    <div fxLayout="row">
-        <mat-form-field fxFlex.lt-sm="100%">
-            <input matInput formControlName="passwordConfirm" placeholder="Confirm Password" type="password"
-                required>
-        </mat-form-field>
+    <div class="form-group">
+        <input formControlName="passwordConfirm" type="password" class="form-control" placeholder="Confirm Password" required>
     </div>
-    <div fxLayout="row">
-        <button mat-raised-button type="submit" color="primary"
-            [disabled]="loading || !registerForm.valid">Register</button>
-    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="loading || !registerForm.valid">Sign Up</button>
 </form>
