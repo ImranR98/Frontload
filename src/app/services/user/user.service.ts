@@ -35,6 +35,8 @@ export class UserService {
 
   // Used on manual logout or when HTTP interceptor fails to refresh access token
   logout() {
+    // Ask server to delete refreshToken but don't care about the response
+    this.requestService.appRequest(`logout`, 'post', { refreshToken: this.refreshToken }).catch(e => null)
     this.accessToken = ''
     this.refreshToken = ''
     this.isLoggedIn.next(false)
