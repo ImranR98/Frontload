@@ -22,6 +22,7 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastComponent } from './components/toast/toast.component';
 import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
+import { PasswordFormComponent } from './components/password-form/password-form.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.
     RegisterComponent,
     ForgotPasswordComponent,
     ToastComponent,
-    ConfirmModalComponent
+    ConfirmModalComponent,
+    PasswordFormComponent
   ],
   imports: [
     BrowserModule,

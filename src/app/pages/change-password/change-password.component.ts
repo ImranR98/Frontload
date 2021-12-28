@@ -16,28 +16,29 @@ export class ChangePasswordComponent implements OnInit {
   constructor(private toastService: ToastService, private userService: UserService, private router: Router) { }
 
   changePasswordForm = new FormGroup({
-    password: new FormControl('', Validators.required),
-    newPassword: new FormControl('', Validators.required),
-    newPasswordConfirm: new FormControl('', Validators.required),
+    passwordForm: new FormGroup({
+      password: new FormControl()
+    }),
+    newPasswordForm: new FormGroup({
+      password: new FormControl(),
+      passwordConfirm: new FormControl()
+    }),
     revokeRefreshTokens: new FormControl(false)
   });
 
   ngOnInit() { }
 
-  changePassword() {
+  changePassword(event: any) {
+    event.target.classList.add('was-validated')
     if (this.changePasswordForm.valid) {
-      if (this.changePasswordForm.controls['newPassword'].value == this.changePasswordForm.controls['newPasswordConfirm'].value) {
-        this.loading = true;
-        this.userService.changePassword(this.changePasswordForm.controls['password'].value, this.changePasswordForm.controls['newPassword'].value, this.changePasswordForm.controls['revokeRefreshTokens'].value).then(() => {
-          this.loading = false;
-          this.toastService.showToast('Your password has been changed', 'success')
-          this.router.navigate(['/account'])
-        }).catch((err) => {
-          this.loading = false;
-        })
-      } else {
-        this.toastService.showToast('Passwords do not match', 'danger');
-      }
+      this.loading = true;
+      this.userService.changePassword(this.changePasswordForm.controls['password'].value, this.changePasswordForm.controls['newPassword'].value, this.changePasswordForm.controls['revokeRefreshTokens'].value).then(() => {
+        this.loading = false;
+        this.toastService.showToast('Your password has been changed', 'success')
+        this.router.navigate(['/account'])
+      }).catch((err) => {
+        this.loading = false;
+      })
     } else {
       this.toastService.showToast('Please fill all fields and provide a valid password', 'danger');
     }

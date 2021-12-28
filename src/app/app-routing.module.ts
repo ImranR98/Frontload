@@ -7,6 +7,7 @@ import { ResetPasswordComponent } from './pages/reset-password/reset-password.co
 import { AccountComponent } from './pages/account/account.component';
 import { ChangeEmailComponent } from './pages/change-email/change-email.component';
 import { ChangePasswordComponent } from './pages/change-password/change-password.component';
+import { PasswordFormComponent } from './components/password-form/password-form.component';
 
 const routes: Routes = [
   {
