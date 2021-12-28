@@ -23,18 +23,17 @@ export class ForgotPasswordComponent implements OnInit {
     if (this.userService.isLoggedIn) this.router.navigate(['/'])
   }
 
-  resetPassword() {
+  resetPassword(event: any) {
+    event.target.classList.add('was-validated')
     if (this.resetPasswordForm.valid) {
       this.loading = true;
       this.userService.requestPasswordReset(this.resetPasswordForm.controls['email'].value).then(() => {
-        this.loading = false;
-        this.resetPasswordForm.reset();
         this.toastService.showToast('A password reset link has been emailed to you', 'success')
-      }).catch((err) => {
+      }).catch(() => { }).finally(() => {
+        this.resetPasswordForm.reset()
+        event.target.classList.remove('was-validated')
         this.loading = false;
       })
-    } else {
-      this.toastService.showToast('Please fill all fields and provide a valid password', 'danger');
     }
 
   }

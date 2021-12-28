@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastService } from 'src/app/services/toast/toast.service';
 import { UserService } from 'src/app/services/user/user.service';
@@ -16,13 +16,8 @@ export class ChangePasswordComponent implements OnInit {
   constructor(private toastService: ToastService, private userService: UserService, private router: Router) { }
 
   changePasswordForm = new FormGroup({
-    passwordForm: new FormGroup({
-      password: new FormControl()
-    }),
-    newPasswordForm: new FormGroup({
-      password: new FormControl(),
-      passwordConfirm: new FormControl()
-    }),
+    password: new FormControl(),
+    newPassword: new FormControl(),
     revokeRefreshTokens: new FormControl(false)
   });
 
@@ -32,16 +27,16 @@ export class ChangePasswordComponent implements OnInit {
     event.target.classList.add('was-validated')
     if (this.changePasswordForm.valid) {
       this.loading = true;
-      this.userService.changePassword(this.changePasswordForm.controls['passwordForm'].value.password, this.changePasswordForm.controls['newPasswordForm'].value.password, this.changePasswordForm.controls['revokeRefreshTokens'].value).then(() => {
+      this.userService.changePassword(this.changePasswordForm.controls['password']?.value, this.changePasswordForm.controls['newPassword'].value, this.changePasswordForm.controls['revokeRefreshTokens'].value).then(() => {
         this.loading = false;
         this.toastService.showToast('Your password has been changed', 'success')
         this.router.navigate(['/account'])
       }).catch((err) => {
+        this.changePasswordForm.reset()
+        event.target.classList.remove('was-validated')
         this.loading = false;
       })
-    } else {
-      this.toastService.showToast('Please fill all fields and provide a valid password', 'danger');
-    }
+    } else console.log('FML')
   }
 
 }

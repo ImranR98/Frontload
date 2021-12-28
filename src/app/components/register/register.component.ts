@@ -13,8 +13,7 @@ export class RegisterComponent implements OnInit {
 
   registerForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', Validators.required),
-    passwordConfirm: new FormControl('', Validators.required)
+    password: new FormControl()
   });
 
   loading: boolean = false;
@@ -25,24 +24,18 @@ export class RegisterComponent implements OnInit {
     if (this.userService.isLoggedIn) this.router.navigate(['/'])
   }
 
-  register() {
+  register(event: any) {
+    event.target.classList.add('was-validated')
     if (this.registerForm.valid) {
-      if (this.registerForm.controls['password'].value == this.registerForm.controls['passwordConfirm'].value) {
-        this.loading = true;
-        this.userService.signUp(this.registerForm.controls['email'].value, this.registerForm.controls['password'].value).then(() => {
-          this.loading = false;
-          this.registerForm.reset();
-          this.toastService.showToast('A verification link has been emailed to you', 'success')
-        }).catch((err) => {
-          this.loading = false;
-        })
-      } else {
-        this.toastService.showToast('Passwords do not match', 'danger');
-      }
-    } else {
-      this.toastService.showToast('Please fill all fields and provide a valid password', 'danger');
+      this.loading = true;
+      this.userService.signUp(this.registerForm.controls['email'].value, this.registerForm.controls['password'].value).then(() => {
+        this.toastService.showToast('A verification link has been emailed to you', 'success')
+      }).catch(() => { }).finally(() => {
+        this.registerForm.reset()
+        event.target.classList.remove('was-validated')
+        this.loading = false;
+      })
     }
-
   }
 
 }

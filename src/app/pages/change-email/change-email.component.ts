@@ -17,12 +17,13 @@ export class ChangeEmailComponent implements OnInit {
 
   changeEmailForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', Validators.required),
+    password: new FormControl(),
   });
 
   ngOnInit() { }
 
-  changeEmail() {
+  changeEmail(event: any) {
+    event.target.classList.add('was-validated')
     if (this.changeEmailForm.valid) {
       this.loading = true;
       this.userService.changeEmail(this.changeEmailForm.controls['password'].value, this.changeEmailForm.controls['email'].value).then(() => {
@@ -30,10 +31,10 @@ export class ChangeEmailComponent implements OnInit {
         this.toastService.showToast('A verification link has been emailed to you', 'success')
         this.router.navigate(['/account'])
       }).catch((err) => {
+        this.changeEmailForm.reset()
+        event.target.classList.remove('was-validated')
         this.loading = false;
       })
-    } else {
-      this.toastService.showToast('Please fill all fields and provide a valid password', 'danger');
     }
   }
 

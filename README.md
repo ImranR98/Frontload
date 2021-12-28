@@ -9,8 +9,11 @@ The frontend/client counterpart to [Backdraft](https://github.com/ImranR98/Backd
 - [x] Visual overhaul - replace bootstrap and flex-layout with material UI
     - [x] Initial replacement
     - [x] Make revoke login prompt a bootstrap modal
-- [ ] Create password component (with params for passwordConfirm and if requirements should be enforced) and enforce requirement validation (in line with server)
-- [ ] See if form input validation errors can be shown under the input
+    - [x] Create password component (with params for passwordConfirm and if requirements should be enforced) and enforce requirement validation (in line with server)
+    - [x] Make form validation under each field on submit instead of disabling submit entirely
+- [ ] Add 'remember me' to login
 - [ ] Internationalize client and add at least 1 other language (also need a way to determine default language and way to select language) - must be done for all strings in TS and template files
+- [ ] Add dark mode toggle (light, dark, follow-system)
 - [ ] Implement automated testing
 - [ ] Create a proper README
+- [ ] Revisit validation to see if it can be done without repetition in template

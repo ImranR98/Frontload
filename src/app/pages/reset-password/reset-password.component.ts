@@ -17,8 +17,7 @@ export class ResetPasswordComponent implements OnInit {
   constructor(private toastService: ToastService, private userService: UserService, private route: ActivatedRoute, private router: Router) { }
 
   resetPasswordForm = new FormGroup({
-    password: new FormControl('', Validators.required),
-    passwordConfirm: new FormControl('', Validators.required)
+    password: new FormControl()
   });
 
   ngOnInit() {
@@ -32,22 +31,19 @@ export class ResetPasswordComponent implements OnInit {
     })
   }
 
-  resetPassword() {
+  resetPassword(event: any) {
+    event.target.classList.add('was-validated')
     if (this.resetPasswordForm.valid) {
-      if (this.resetPasswordForm.controls['password'].value == this.resetPasswordForm.controls['passwordConfirm'].value) {
-        this.loading = true;
-        this.userService.resetPassword(this.passwordResetToken, this.resetPasswordForm.controls['password'].value).then(() => {
-          this.loading = false;
-          this.toastService.showToast('Your password has been reset', 'success')
-          this.router.navigate(['/'])
-        }).catch((err) => {
-          this.loading = false;
-        })
-      } else {
-        this.toastService.showToast('Passwords do not match', 'danger');
-      }
-    } else {
-      this.toastService.showToast('Please fill all fields and provide a valid password', 'danger');
+      this.loading = true;
+      this.userService.resetPassword(this.passwordResetToken, this.resetPasswordForm.controls['password'].value).then(() => {
+        this.loading = false;
+        this.toastService.showToast('Your password has been reset', 'success')
+        this.router.navigate(['/'])
+      }).catch((err) => {
+        this.resetPasswordForm.reset()
+        event.target.classList.remove('was-validated')
+        this.loading = false;
+      })
     }
   }
 }

@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
 
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', Validators.required)
+    password: new FormControl()
   });
 
   loading: boolean = false;
@@ -23,11 +23,17 @@ export class LoginComponent implements OnInit {
     if (this.userService.isLoggedIn) this.router.navigate(['/'])
   }
 
-  login() {
-    this.loading = true;
-    this.userService.login(this.loginForm.controls['email'].value, this.loginForm.controls['password'].value).catch(() => { }).finally(() => {
-      this.loading = false;
-    })
+  login(event: any) {
+    event.target.classList.add('was-validated')
+    if (this.loginForm.valid) {
+      this.loading = true;
+      this.userService.login(this.loginForm.controls['email'].value, this.loginForm.controls['password'].value).catch(() => {
+        this.loginForm.reset()
+        event.target.classList.remove('was-validated')
+      }).finally(() => {
+        this.loading = false;
+      })
+    }
   }
 
 }
