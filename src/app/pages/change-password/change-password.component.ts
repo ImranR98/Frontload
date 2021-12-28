@@ -30,9 +30,10 @@ export class ChangePasswordComponent implements OnInit {
 
   changePassword(event: any) {
     event.target.classList.add('was-validated')
+    console.log(this.changePasswordForm.value)
     if (this.changePasswordForm.valid) {
       this.loading = true;
-      this.userService.changePassword(this.changePasswordForm.controls['password'].value, this.changePasswordForm.controls['newPassword'].value, this.changePasswordForm.controls['revokeRefreshTokens'].value).then(() => {
+      this.userService.changePassword(this.changePasswordForm.controls['passwordForm'].value.password, this.changePasswordForm.controls['newPasswordForm'].value.password, this.changePasswordForm.controls['revokeRefreshTokens'].value).then(() => {
         this.loading = false;
         this.toastService.showToast('Your password has been changed', 'success')
         this.router.navigate(['/account'])
