@@ -12,10 +12,8 @@ export class PasswordFormComponent implements OnInit {
   @Input() placeHolder: string = 'Password'
   @Input() formGroupName: string = 'passwordForm'
 
-  @ViewChild('formGrp') formGrp: ElementRef | undefined
-  @ViewChild('confInp') confInp: ElementRef | undefined
-
-  form: FormGroup | undefined
+  password: FormControl | undefined
+  passwordConfirm: FormControl | undefined
 
   constructor(private rootFormGroup: FormGroupDirective) { }
 
@@ -32,7 +30,7 @@ export class PasswordFormComponent implements OnInit {
   passwordErrorToShow() {
     const possibleCodesInPriorityOrder = ['required', 'short']
     for (let i = 0; i < possibleCodesInPriorityOrder.length; i++) {
-      if (this.form?.controls['password'].errors?.[possibleCodesInPriorityOrder[i]]) return possibleCodesInPriorityOrder[i]
+      if (this.password?.errors?.[possibleCodesInPriorityOrder[i]]) return possibleCodesInPriorityOrder[i]
     }
     return 'other'
   }
@@ -49,11 +47,13 @@ export class PasswordFormComponent implements OnInit {
   // Grab the parent's formGroup for password and add the relevant validators
   // The custom password requirements validator is only used if the formGroup contains a confirmPassword field
   ngOnInit(): void {
-    this.form = this.rootFormGroup.control.get(this.formGroupName) as FormGroup
-    this.form.controls['password'].setValidators([Validators.required])
-    if (this.form.controls['passwordConfirm']) {
-      this.form.controls['password'].addValidators([this.validatePassword])
-      this.form.controls['passwordConfirm'].setValidators([Validators.required, this.validateConfirmPassword])
+    const form = this.rootFormGroup.control.get(this.formGroupName) as FormGroup
+    if (form.controls['password']) this.password = form.controls['password'] as FormControl
+    if (form.controls['passwordConfirm']) this.passwordConfirm = form.controls['passwordConfirm'] as FormControl
+    this.password?.setValidators([Validators.required])
+    if (this.passwordConfirm) {
+      this.password?.addValidators([this.validatePassword])
+      this.passwordConfirm.setValidators([Validators.required, this.validateConfirmPassword])
     }
   }
 }
