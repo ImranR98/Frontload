@@ -1,10 +1,16 @@
 <form [formGroup]="loginForm" (ngSubmit)="login($event)">
     <div class="form-group">
-        <input formControlName="email" type="email" class="form-control" placeholder="Email" [disabled]="loading" required>
+        <input formControlName="email" type="email" class="form-control" placeholder="Email" [disabled]="loading"
+            required>
         <div class="invalid-feedback">
             A valid email is required
         </div>
     </div>
     <app-password-form></app-password-form>
+    <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="rememberCheck" formControlName="remember"
+            [disabled]="loading">
+        <label class="form-check-label" for="rememberCheck">Remember me</label>
+    </div>
     <button type="submit" class="btn btn-primary" [disabled]="loading">Sign In</button>
 </form>

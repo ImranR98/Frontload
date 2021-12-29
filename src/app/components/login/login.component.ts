@@ -12,24 +12,44 @@ export class LoginComponent implements OnInit {
 
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl()
+    password: new FormControl(),
+    remember: new FormControl(false)
   });
 
   loading: boolean = false;
 
   constructor(private userService: UserService, private router: Router) { }
 
+  loadSavedEmail() {
+    let savedEmail = localStorage.getItem('saved_email')
+    if (savedEmail) {
+      this.loginForm.controls['email'].setValue(savedEmail)
+      this.loginForm.controls['remember'].setValue(true)
+    }
+  }
+
+  saveSavedEmail() {
+    if (this.loginForm.controls['remember'].value === true) {
+      localStorage.setItem('saved_email', this.loginForm.controls['email'].value)
+    } else {
+      localStorage.removeItem('saved_email')
+    }
+  }
+
   ngOnInit() {
     if (this.userService.isLoggedIn) this.router.navigate(['/'])
+    this.loadSavedEmail()
   }
 
   login(event: any) {
     event.target.classList.add('was-validated')
     if (this.loginForm.valid) {
+      this.saveSavedEmail()
       this.loading = true;
       this.userService.login(this.loginForm.controls['email'].value, this.loginForm.controls['password'].value).catch(() => {
         this.loginForm.reset()
         event.target.classList.remove('was-validated')
+        this.loadSavedEmail()
       }).finally(() => {
         this.loading = false;
       })
