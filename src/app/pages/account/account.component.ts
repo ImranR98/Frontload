@@ -15,6 +15,7 @@ export class AccountComponent implements OnInit {
 
   me: ServerUserInterface | null = null
   loading: boolean = false
+  public isCollapsed = true
 
   constructor(private modalService: NgbModal, private userService: UserService, private router: Router) { }
 
