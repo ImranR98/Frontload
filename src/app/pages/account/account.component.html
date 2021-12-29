@@ -2,23 +2,25 @@
     <div class="card mb-3">
         <div class="card-body">
             <h5 class="card-title">{{me.email}}</h5>
-            <div class="btn-group">
-                <button type="button" class="btn btn-outline-primary" routerLink="/change-email"
-                    [disabled]="loading">Change
-                    Email</button>
-                <button type="button" class="btn btn-outline-primary" routerLink="/change-password"
-                    [disabled]="loading">Change
-                    Password</button>
+            <div class="d-grid gap-2 d-md-block">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-outline-primary" routerLink="/change-email"
+                        [disabled]="loading">Change
+                        Email</button>
+                    <button type="button" class="btn btn-outline-primary" routerLink="/change-password"
+                        [disabled]="loading">Change
+                        Password</button>
+                </div>
             </div>
         </div>
     </div>
     <div class="card card-body">
-        <span>
+        <div class="d-grid gap-2 d-md-block">
             <button type="button" class="btn btn-outline-primary" (click)="collapse.toggle()"
                 [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
                 {{isCollapsed ? 'Show' : 'Hide'}} Logged In Devices
             </button>
-        </span>
+        </div>
         <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
             <div *ngFor="let login of me?.refreshTokens">
                 <hr>
@@ -39,5 +41,5 @@
 </div>
 
 <p *ngIf="!me">
-    <ngb-progressbar type="info" [value]="100" [striped]="true" [animated]="true"></ngb-progressbar>
+    <ngb-progressbar [value]="100" [striped]="true" [animated]="true"></ngb-progressbar>
 </p>

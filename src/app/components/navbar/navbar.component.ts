@@ -12,6 +12,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   isLoggedIn: boolean = false
   private subscriptions: Subscription[] = []
+  public collapsed=true
   
   constructor(private userService: UserService, public route: ActivatedRoute) { }
 

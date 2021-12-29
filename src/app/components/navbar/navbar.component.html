@@ -1,22 +1,17 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand mb-0 h1" href="#">Frontload</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
+    <div class="container-fluid">
+        <a class="navbar-brand" routerLink="/">Frontload</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation" (click)="collapsed = !collapsed">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse" [class.collapse]="collapsed" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
                 <a class="nav-link" routerLink="/" routerLinkActive="active"
                     [routerLinkActiveOptions]="{exact: true}">Home</a>
-            </li>
-            <li class="nav-item" *ngIf="isLoggedIn">
-                <a class="nav-link" routerLink="/account" routerLinkActive="active">Account</a>
-            </li>
-            <li class="nav-item" *ngIf="isLoggedIn">
-                <a class="nav-link" (click)="logout()" routerLink="/">Logout</a>
-            </li>
-        </ul>
+                <a *ngIf="isLoggedIn" class="nav-link" routerLink="/account" routerLinkActive="active">Account</a>
+                <a *ngIf="isLoggedIn" class="nav-link" (click)="logout()">Sign Out</a>
+            </div>
+        </div>
     </div>
 </nav>
