@@ -1,6 +1,12 @@
 /* Importing Bootstrap SCSS file. */
 @import "~bootstrap/scss/bootstrap";
 
+/* Import dark theme SCSS file
+It is ugly, inconsistent, and uncustomizable, but Bootstrap has no native dark theme support so this will have to do
+No manual toggle possible either */
+@import "~bootstrap-dark-5/dist/css/bootstrap-dark";
+
+/* All the rest */
 .form-group {
-    @extend .mb-3
+    @extend .mb-3;
 }
