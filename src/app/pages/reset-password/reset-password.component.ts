@@ -25,7 +25,7 @@ export class ResetPasswordComponent implements OnInit {
       if (params['passwordResetToken']) {
         this.passwordResetToken = params['passwordResetToken']
       } else {
-        this.toastService.showToast('No reset token provided', 'danger')
+        this.toastService.showToast($localize`No reset token provided`, 'danger')
         this.router.navigate(['/'])
       }
     })
@@ -37,7 +37,7 @@ export class ResetPasswordComponent implements OnInit {
       this.loading = true;
       this.userService.resetPassword(this.passwordResetToken, this.resetPasswordForm.controls['password'].value).then(() => {
         this.loading = false;
-        this.toastService.showToast('Your password has been reset', 'success')
+        this.toastService.showToast($localize`Your password has been reset`, 'success')
         this.router.navigate(['/'])
       }).catch((err) => {
         this.resetPasswordForm.reset()

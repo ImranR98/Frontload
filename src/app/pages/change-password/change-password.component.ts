@@ -29,14 +29,14 @@ export class ChangePasswordComponent implements OnInit {
       this.loading = true;
       this.userService.changePassword(this.changePasswordForm.controls['password']?.value, this.changePasswordForm.controls['newPassword'].value, this.changePasswordForm.controls['revokeRefreshTokens'].value).then(() => {
         this.loading = false;
-        this.toastService.showToast('Your password has been changed', 'success')
+        this.toastService.showToast($localize `Your password has been changed`, 'success')
         this.router.navigate(['/account'])
       }).catch((err) => {
         this.changePasswordForm.reset()
         event.target.classList.remove('was-validated')
         this.loading = false;
       })
-    } else console.log('FML')
+    }
   }
 
 }

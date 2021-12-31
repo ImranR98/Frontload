@@ -28,7 +28,7 @@ export class ForgotPasswordComponent implements OnInit {
     if (this.resetPasswordForm.valid) {
       this.loading = true;
       this.userService.requestPasswordReset(this.resetPasswordForm.controls['email'].value).then(() => {
-        this.toastService.showToast('A password reset link has been emailed to you', 'success')
+        this.toastService.showToast($localize `A password reset link has been emailed to you`, 'success')
       }).catch(() => { }).finally(() => {
         this.resetPasswordForm.reset()
         event.target.classList.remove('was-validated')

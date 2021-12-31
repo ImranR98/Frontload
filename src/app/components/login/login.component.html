@@ -1,8 +1,8 @@
 <form [formGroup]="loginForm" (ngSubmit)="login($event)">
     <div class="form-group">
-        <input formControlName="email" type="email" class="form-control" placeholder="Email" [disabled]="loading"
+        <input formControlName="email" type="email" class="form-control" i18n-placeholder placeholder="Email" [disabled]="loading"
             required>
-        <div class="invalid-feedback">
+        <div class="invalid-feedback" i18n>
             A valid email is required
         </div>
     </div>
@@ -10,7 +10,7 @@
     <div class="form-group form-check">
         <input type="checkbox" class="form-check-input" id="rememberCheck" formControlName="remember"
             [disabled]="loading">
-        <label class="form-check-label" for="rememberCheck">Remember me</label>
+        <label class="form-check-label" for="rememberCheck" i18n>Remember me</label>
     </div>
-    <button type="submit" class="btn btn-primary" [disabled]="loading">Sign In</button>
+    <button type="submit" class="btn btn-primary" [disabled]="loading" i18n>Sign In</button>
 </form>

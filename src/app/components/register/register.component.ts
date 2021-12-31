@@ -29,7 +29,7 @@ export class RegisterComponent implements OnInit {
     if (this.registerForm.valid) {
       this.loading = true;
       this.userService.signUp(this.registerForm.controls['email'].value, this.registerForm.controls['password'].value).then(() => {
-        this.toastService.showToast('A verification link has been emailed to you', 'success')
+        this.toastService.showToast($localize `A verification link has been emailed to you`, 'success')
       }).catch(() => { }).finally(() => {
         this.registerForm.reset()
         event.target.classList.remove('was-validated')

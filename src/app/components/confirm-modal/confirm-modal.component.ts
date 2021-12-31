@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -8,8 +8,8 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class ConfirmModalComponent implements OnInit {
 
-  title: string = 'Confirmation'
-  message: string = 'Are you sure?'
+  title: string = $localize`Confirmation`
+  message: string = $localize`Are you sure?`
 
   constructor(public activeModal: NgbActiveModal) { }
 

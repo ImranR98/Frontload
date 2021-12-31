@@ -17,6 +17,11 @@ export class AccountComponent implements OnInit {
   loading: boolean = false
   public isCollapsed = true
 
+  loginsCollapseText = {
+    show: $localize `Show Logged In Devices`,
+    hide: $localize `Hide Logged In Devices`
+  }
+
   constructor(private modalService: NgbModal, private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
@@ -28,15 +33,18 @@ export class AccountComponent implements OnInit {
     let finalString = ''
     if (UA.browser.name) {
       finalString += UA.browser.name
-      UA.browser.version ? finalString += ` ${UA.browser.version} ` : finalString += ' '
-    } else finalString += 'Unknown browser '
-    let OSSegmentPrefix = 'running'
-    if (UA.device.vendor && UA.device.model)
-      finalString += `on a${['a,e,i,o,u'].includes(UA.device.vendor[0].toLowerCase()) ? 'n' : ''} ${UA.device.vendor} ${UA.device.model} `
-    else OSSegmentPrefix = 'on'
+      UA.browser.version ? finalString += ` ${UA.browser.version}` : ''
+    } else {
+      finalString += $localize`Unknown browser`
+    }
+    if (UA.device.vendor && UA.device.model) {
+      finalString += ' - '
+      finalString += `${UA.device.vendor} ${UA.device.model}`
+    }
     if (UA.os.name) {
-      finalString += `${OSSegmentPrefix} ${UA.os.name}`
-      UA.os.version ? finalString += ` ${UA.os.version}` : null
+      finalString += ' - '
+      finalString += `${UA.os.name}`
+      UA.os.version ? finalString += ` ${UA.os.version}` : ''
     }
     return finalString
   }
@@ -49,7 +57,7 @@ export class AccountComponent implements OnInit {
 
   revokeLogin(id: string) {
     const modalRef = this.modalService.open(ConfirmModalComponent)
-    modalRef.componentInstance.message = 'Revoke this login?'
+    modalRef.componentInstance.message = $localize`Revoke this login?`
     modalRef.closed.subscribe(val => {
       if (val) {
         this.loading = true
