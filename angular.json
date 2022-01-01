@@ -39,8 +39,7 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": [],
-            "localize": true
+            "scripts": []
           },
           "configurations": {
             "production": {
