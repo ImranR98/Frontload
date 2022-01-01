@@ -4,7 +4,7 @@ export interface AppErrorInterface {
 };
 
 export class AppError implements AppErrorInterface {
-    constructor(actionable: boolean = false, message: string = 'Unknown Error') {
+    constructor(actionable: boolean = false, message: string = $localize `Unknown Error`) {
         this.message = message
         this.actionable = actionable
     }
@@ -15,20 +15,20 @@ export class AppError implements AppErrorInterface {
 // These codes must be manually copied from the server API spec and kept up to date
 // If client/server are part of a monorepo, this could be moved to a shared module 
 export const serverErrors = {
-    'SERVER_ERROR': 'Internal Server Error',
-    'INVALID_LOGIN': 'Email or password is invalid',
-    'INVALID_ACCESS_TOKEN': 'You have been logged out',
-    'INVALID_REFRESH_TOKEN': 'You have been logged out',
-    'INVALID_TOKEN': 'Token is invalid',
-    'USER_NOT_FOUND': 'Specified user was not found',
-    'ITEM_NOT_FOUND': 'Specified item was not found',
-    'WRONG_PASSWORD': 'Password is incorrect',
-    'INVALID_PASSWORD': 'Password does not fulfill requirements',
-    'ALREADY_VERIFIED': 'You are already verified',
-    'NOT_VERIFIED': 'You must verify your email first',
-    'EMAIL_IN_USE': 'That email is already in use',
-    'EMAIL_ALREADY_SET': 'That is your current email',
-    'VALIDATION_ERROR': 'Error validating input'
+    'SERVER_ERROR': $localize`Internal Server Error`,
+    'INVALID_LOGIN': $localize`Email or password is invalid`,
+    'INVALID_ACCESS_TOKEN': $localize`You have been logged out`,
+    'INVALID_REFRESH_TOKEN': $localize`You have been logged out`,
+    'INVALID_TOKEN': $localize`Token is invalid`,
+    'USER_NOT_FOUND': $localize`Specified user was not found`,
+    'ITEM_NOT_FOUND': $localize`Specified item was not found`,
+    'WRONG_PASSWORD': $localize`Password is incorrect`,
+    'INVALID_PASSWORD': $localize`Password does not fulfill requirements`,
+    'ALREADY_VERIFIED': $localize`You are already verified`,
+    'NOT_VERIFIED': $localize`You must verify your email first`,
+    'EMAIL_IN_USE': $localize`That email is already in use`,
+    'EMAIL_ALREADY_SET': $localize`That is your current email`,
+    'VALIDATION_ERROR': $localize`Error validating input`
 }
 export type ServerErrorCodes = keyof typeof serverErrors
 

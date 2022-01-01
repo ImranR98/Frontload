@@ -1,0 +1,812 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="ngb.alert.close" datatype="html">
+        <source>Close</source>
+        <target>Funga</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/alert/alert.ts</context>
+          <context context-type="linenumber">75,78</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.carousel.slide-number" datatype="html">
+        <source>
+          Slide
+          <x id="INTERPOLATION" equiv-text=".value; }
+
+  /*" />
+          of
+          <x id="INTERPOLATION_1" equiv-text="ws to interact" />
+        </source>
+        <target>
+          Ukurasa
+          <x id="INTERPOLATION" equiv-text=".value; }
+
+  /*" />
+          wa
+          <x id="INTERPOLATION_1" equiv-text="ws to interact" />
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/carousel/carousel.ts</context>
+          <context context-type="linenumber">150,157</context>
+        </context-group>
+        <note priority="1" from="description">Currently selected slide number read by screen reader</note>
+      </trans-unit>
+      <trans-unit id="ngb.carousel.previous" datatype="html">
+        <source>Previous</source>
+        <target>Uliopita</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/carousel/carousel.ts</context>
+          <context context-type="linenumber">174,177</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.carousel.next" datatype="html">
+        <source>Next</source>
+        <target>Ijayo</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/carousel/carousel.ts</context>
+          <context context-type="linenumber">194,195</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.datepicker.select-month" datatype="html">
+        <source>Select month</source>
+        <target>Chagua mwezi</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/datepicker/datepicker-navigation-select.ts</context>
+          <context context-type="linenumber">74</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/datepicker/datepicker-navigation-select.ts</context>
+          <context context-type="linenumber">74</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.datepicker.select-year" datatype="html">
+        <source>Select year</source>
+        <target>Chagua mwaka</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/datepicker/datepicker-navigation-select.ts</context>
+          <context context-type="linenumber">74</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/datepicker/datepicker-navigation-select.ts</context>
+          <context context-type="linenumber">74</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.datepicker.previous-month" datatype="html">
+        <source>Previous month</source>
+        <target>Mwezi uliopita</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/datepicker/datepicker-navigation.ts</context>
+          <context context-type="linenumber">69</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/datepicker/datepicker-navigation.ts</context>
+          <context context-type="linenumber">69</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.datepicker.next-month" datatype="html">
+        <source>Next month</source>
+        <target>Mwezi ujao</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/datepicker/datepicker-navigation.ts</context>
+          <context context-type="linenumber">69</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/datepicker/datepicker-navigation.ts</context>
+          <context context-type="linenumber">69</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.pagination.first" datatype="html">
+        <source>««</source>
+        <target>««</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/pagination/pagination.ts</context>
+          <context context-type="linenumber">244,247</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.pagination.previous" datatype="html">
+        <source>«</source>
+        <target>«</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/pagination/pagination.ts</context>
+          <context context-type="linenumber">261,264</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.pagination.next" datatype="html">
+        <source>»</source>
+        <target>»</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/pagination/pagination.ts</context>
+          <context context-type="linenumber">275,278</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.pagination.last" datatype="html">
+        <source>»»</source>
+        <target>»»</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/pagination/pagination.ts</context>
+          <context context-type="linenumber">296</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.pagination.first-aria" datatype="html">
+        <source>First</source>
+        <target>Kwanza</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/pagination/pagination.ts</context>
+          <context context-type="linenumber">311,312</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.pagination.previous-aria" datatype="html">
+        <source>Previous</source>
+        <target>Uliopita</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/pagination/pagination.ts</context>
+          <context context-type="linenumber">326</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.pagination.next-aria" datatype="html">
+        <source>Next</source>
+        <target>Ijayo</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/pagination/pagination.ts</context>
+          <context context-type="linenumber">338</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.pagination.last-aria" datatype="html">
+        <source>Last</source>
+        <target>Mwisho</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/pagination/pagination.ts</context>
+          <context context-type="linenumber">349</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.progressbar.value" datatype="html">
+        <source>
+          <x id="INTERPOLATION" equiv-text="5.2.0
+   */" />
+        </source>
+        <target>
+          <x id="INTERPOLATION" equiv-text="5.2.0
+   */" />
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/progressbar/progressbar.ts</context>
+          <context context-type="linenumber">58,62</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.HH" datatype="html">
+        <source>HH</source>
+        <target>SS</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/timepicker/timepicker.ts</context>
+          <context context-type="linenumber">131,133</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.hours" datatype="html">
+        <source>Hours</source>
+        <target>Saa</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/timepicker/timepicker.ts</context>
+          <context context-type="linenumber">151</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.MM" datatype="html">
+        <source>MM</source>
+        <target>DD</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/timepicker/timepicker.ts</context>
+          <context context-type="linenumber">168</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.minutes" datatype="html">
+        <source>Minutes</source>
+        <target>Dakika</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/timepicker/timepicker.ts</context>
+          <context context-type="linenumber">183</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.increment-hours" datatype="html">
+        <source>Increment hours</source>
+        <target>Ongeza masaa</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/timepicker/timepicker.ts</context>
+          <context context-type="linenumber">198,199</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.decrement-hours" datatype="html">
+        <source>Decrement hours</source>
+        <target>Punguza masaa</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/timepicker/timepicker.ts</context>
+          <context context-type="linenumber">210,212</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.increment-minutes" datatype="html">
+        <source>Increment minutes</source>
+        <target>Ongeza dakika</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/timepicker/timepicker.ts</context>
+          <context context-type="linenumber">230</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.decrement-minutes" datatype="html">
+        <source>Decrement minutes</source>
+        <target>Punguza dakika</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/timepicker/timepicker.ts</context>
+          <context context-type="linenumber">249,254</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.SS" datatype="html">
+        <source>SS</source>
+        <target>SS</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/timepicker/timepicker.ts</context>
+          <context context-type="linenumber">268,270</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.seconds" datatype="html">
+        <source>Seconds</source>
+        <target>Sekunde</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/timepicker/timepicker.ts</context>
+          <context context-type="linenumber">283,285</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.increment-seconds" datatype="html">
+        <source>Increment seconds</source>
+        <target>Ongeza sekunde</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/timepicker/timepicker.ts</context>
+          <context context-type="linenumber">295</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.decrement-seconds" datatype="html">
+        <source>Decrement seconds</source>
+        <target>Punguza sekunde</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/timepicker/timepicker.ts</context>
+          <context context-type="linenumber">295</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.PM" datatype="html">
+        <source>
+          <x id="INTERPOLATION" />
+        </source>
+        <target>
+          <x id="INTERPOLATION" />
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/timepicker/timepicker.ts</context>
+          <context context-type="linenumber">295</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.AM" datatype="html">
+        <source>
+          <x id="INTERPOLATION" />
+        </source>
+        <target>
+          <x id="INTERPOLATION" />
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/timepicker/timepicker.ts</context>
+          <context context-type="linenumber">295</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.toast.close-aria" datatype="html">
+        <source>Close</source>
+        <target>Funga</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/src/toast/toast.ts</context>
+          <context context-type="linenumber">105,107</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7819314041543176992" datatype="html">
+        <source>Close</source>
+        <target>Funga</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/confirm-modal/confirm-modal.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3542042671420335679" datatype="html">
+        <source>No</source>
+        <target>Hapana</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/confirm-modal/confirm-modal.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2807800733729323332" datatype="html">
+        <source>Yes</source>
+        <target>Ndio</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/confirm-modal/confirm-modal.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1234709746630139322" datatype="html">
+        <source>Confirmation</source>
+        <target>Uthibitisho</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/confirm-modal/confirm-modal.component.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7515883357904500238" datatype="html">
+        <source>Are you sure?</source>
+        <target>Una uhakika?</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/confirm-modal/confirm-modal.component.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4768749765465246664" datatype="html">
+        <source>Email</source>
+        <target>Barua pepe</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/forgot-password/forgot-password.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/login/login.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/register/register.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6002816484161296402" datatype="html">
+        <source> A valid email is required </source>
+        <target>Barua pepe halali inahitajika</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/forgot-password/forgot-password.component.html</context>
+          <context context-type="linenumber">5,7</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/login/login.component.html</context>
+          <context context-type="linenumber">5,7</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/register/register.component.html</context>
+          <context context-type="linenumber">4,6</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/change-email/change-email.component.html</context>
+          <context context-type="linenumber">4,6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6972105223770675605" datatype="html">
+        <source>Reset Password</source>
+        <target>Badilisha nenosiri</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/forgot-password/forgot-password.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/home/home.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8854265099435220939" datatype="html">
+        <source>A password reset link has been emailed to you</source>
+        <target>Kiungo cha kuthibitisha nenosiri kimetumwa kwako</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/forgot-password/forgot-password.component.ts</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="931252989873527145" datatype="html">
+        <source>Remember me</source>
+        <target>Nikumbuke</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/login/login.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="840692109692540367" datatype="html">
+        <source>Sign In</source>
+        <target>Ingia</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/login/login.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/home/home.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8255834268347738766" datatype="html">
+        <source>Toggle navigation</source>
+        <target>Geuza urambazaji</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/navbar/navbar.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2821179408673282599" datatype="html">
+        <source>Home</source>
+        <target>Ukurasa Mkuu</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/navbar/navbar.component.html</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4086606389696938932" datatype="html">
+        <source>Account</source>
+        <target>Akaunti</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/navbar/navbar.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="935790816200474922" datatype="html">
+        <source>Sign Out</source>
+        <target>Toka</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/navbar/navbar.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3469656934992856985" datatype="html">
+        <source>Minimum 8 characters</source>
+        <target>Angalau herufi 8</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/password-form/password-form.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="205044832662301680" datatype="html">
+        <source>Password is required</source>
+        <target>Nenosiri linahitajika</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/password-form/password-form.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7127097731879540796" datatype="html">
+        <source>Password is too short</source>
+        <target>Nenosiri ni fupi mno</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/password-form/password-form.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1431416938026210429" datatype="html">
+        <source>Password</source>
+        <target>Nenosiri</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/password-form/password-form.component.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1466012768716286509" datatype="html">
+        <source>Sign Up</source>
+        <target>Jisajili</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/register/register.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/home/home.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2636141855300056176" datatype="html">
+        <source>A verification link has been emailed to you</source>
+        <target>Kiungo cha kuthibitisha barua pepe kimetumwa kwako</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/register/register.component.ts</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/change-email/change-email.component.ts</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="153674187856813645" datatype="html">
+        <source>Unknown Error</source>
+        <target>Kosa Lisilojulikana </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/models/error.models.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8002549289427560839" datatype="html">
+        <source>Internal Server Error</source>
+        <target>Kosa la Seva</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/models/error.models.ts</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="20843182286112142" datatype="html">
+        <source>Email or password is invalid</source>
+        <target>Barua pepe au nenosiri sio sahihi</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/models/error.models.ts</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3439538517671911682" datatype="html">
+        <source>You have been logged out</source>
+        <target>Umetolewa</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/models/error.models.ts</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/models/error.models.ts</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6520430077210382167" datatype="html">
+        <source>Token is invalid</source>
+        <target>Ishara ni batili</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/models/error.models.ts</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1052121874680678960" datatype="html">
+        <source>Specified user was not found</source>
+        <target>Mtumiaji aliyebainishwa hakupatikana</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/models/error.models.ts</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6634490390551542114" datatype="html">
+        <source>Specified item was not found</source>
+        <target>Mtumiaji aliyebainishwa hakupatikana</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/models/error.models.ts</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8236041640835847988" datatype="html">
+        <source>Password is incorrect</source>
+        <target>Nenosiri si sahihi</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/models/error.models.ts</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4615715941725693586" datatype="html">
+        <source>Password does not fulfill requirements</source>
+        <target>Mtumiaji aliyebainishwa hakupatikana</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/models/error.models.ts</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6215313231196865677" datatype="html">
+        <source>You are already verified</source>
+        <target>Tayari umethibitishwa</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/models/error.models.ts</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4696077133485129593" datatype="html">
+        <source>You must verify your email first</source>
+        <target>Lazima uthibitishe barua pepe yako kwanza</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/models/error.models.ts</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4883463112200099549" datatype="html">
+        <source>That email is already in use</source>
+        <target>Barua pepe hiyo tayari inatumika</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/models/error.models.ts</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7376877936319541498" datatype="html">
+        <source>That is your current email</source>
+        <target>Hiyo ndiyo barua pepe yako ya sasa</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/models/error.models.ts</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="106275123255902877" datatype="html">
+        <source>Error validating input</source>
+        <target>Hitilafu ya kuthibitisha ingizo</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/models/error.models.ts</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5663262086756525973" datatype="html">
+        <source>Change Email</source>
+        <target>Badilisha Barua Pepe</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/account/account.component.html</context>
+          <context context-type="linenumber">8,9</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/change-email/change-email.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6582573664846559511" datatype="html">
+        <source>Change Password</source>
+        <target>Badilisha Nenosiri</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/account/account.component.html</context>
+          <context context-type="linenumber">11,12</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/change-password/change-password.component.html</context>
+          <context context-type="linenumber">8,9</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/reset-password/reset-password.component.html</context>
+          <context context-type="linenumber">4,5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="187187500641108332" datatype="html">
+        <source>
+          <x id="INTERPOLATION" equiv-text="{{formatUAString(login.userAgent)}}" />
+        </source>
+        <target>
+          <x id="INTERPOLATION" equiv-text="{{formatUAString(login.userAgent)}}" />
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/account/account.component.html</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7118843849560484495" datatype="html">
+        <source>Revoke Login</source>
+        <target>Batilisha Ingilizo</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/account/account.component.html</context>
+          <context context-type="linenumber">34,35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5084213603164013862" datatype="html">
+        <source>Show Logged In Devices</source>
+        <target>Onyesha Vifaa Vilivyoingia</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/account/account.component.ts</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5088064870394274966" datatype="html">
+        <source>Hide Logged In Devices</source>
+        <target>Fisha Vifaa Vilivyoingia</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/account/account.component.ts</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2279368802829975420" datatype="html">
+        <source>Unknown browser</source>
+        <target>Kivinjari kisichojulikana</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/account/account.component.ts</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8136460675787392476" datatype="html">
+        <source>Revoke this login?</source>
+        <target>Batilisha ingilizo hiyo?</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/account/account.component.ts</context>
+          <context context-type="linenumber">60</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="868873378866306644" datatype="html">
+        <source>New Email</source>
+        <target>Barua Pepe Mpya</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/change-email/change-email.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1846542227840529109" datatype="html">
+        <source>Current Password</source>
+        <target>Nenosiri la Sasa</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/change-email/change-email.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/change-password/change-password.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1221596867309460035" datatype="html">
+        <source>New Password</source>
+        <target>Nenosiri Mpya</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/change-password/change-password.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/reset-password/reset-password.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7460858748653115843" datatype="html">
+        <source>Sign out everywhere else</source>
+        <target>Ondoka popote pengine</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/change-password/change-password.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8450994523775212991" datatype="html">
+        <source>Your password has been changed</source>
+        <target>Nenosiri lako limebadilishwa</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/change-password/change-password.component.ts</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5890833044137447416" datatype="html">
+        <source>Welcome!</source>
+        <target>Karibu!</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/home/home.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5663459577601345011" datatype="html">
+        <source>No reset token provided</source>
+        <target>Hakuna tokeni ya kuweka upya iliyotolewa</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/reset-password/reset-password.component.ts</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6594997746611276820" datatype="html">
+        <source>Your password has been reset</source>
+        <target>Nenosiri lako limewekwa upya</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/reset-password/reset-password.component.ts</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6307108224338077168" datatype="html">
+        <source>Verify Email</source>
+        <target>Thibitisha Barua Pepe</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/verify-email/verify-email.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7354849695265627438" datatype="html">
+        <source>Email verified! You can now log in.</source>
+        <target>Barua pepe imethibitishwa! sasa unaweza kuingia.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/verify-email/verify-email.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2997929579116968884" datatype="html">
+        <source>Verifying email, please wait</source>
+        <target>Tunathibitisha barua pepe, tafadhali subiri</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/verify-email/verify-email.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5341577140785081208" datatype="html">
+        <source>No verification token provided</source>
+        <target>Hakuna tokeni ya uthibitishaji iliyotolewa</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/verify-email/verify-email.component.ts</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

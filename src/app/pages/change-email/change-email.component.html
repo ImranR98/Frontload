@@ -1,10 +1,10 @@
 <form [formGroup]="changeEmailForm" (ngSubmit)="changeEmail($event)">
     <div class="form-group">
-        <input formControlName="email" type="email" class="form-control" placeholder="New Email" [disabled]="loading" required>
-        <div class="invalid-feedback">
+        <input formControlName="email" type="email" class="form-control" i18n-placeholder placeholder="New Email" [disabled]="loading" required>
+        <div class="invalid-feedback" i18n>
             A valid email is required
         </div>
     </div>
-    <app-password-form placeHolder="Current Password" [disabled]="loading"></app-password-form>
-    <button type="submit" class="btn btn-primary" [disabled]="loading">Change Email</button>
+    <app-password-form i18n-placeHolder placeHolder="Current Password" [disabled]="loading"></app-password-form>
+    <button type="submit" class="btn btn-primary" [disabled]="loading" i18n>Change Email</button>
 </form>

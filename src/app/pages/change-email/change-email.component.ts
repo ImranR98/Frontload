@@ -28,7 +28,7 @@ export class ChangeEmailComponent implements OnInit {
       this.loading = true;
       this.userService.changeEmail(this.changeEmailForm.controls['password'].value, this.changeEmailForm.controls['email'].value).then(() => {
         this.loading = false;
-        this.toastService.showToast('A verification link has been emailed to you', 'success')
+        this.toastService.showToast($localize `A verification link has been emailed to you`, 'success')
         this.router.navigate(['/account'])
       }).catch((err) => {
         this.changeEmailForm.reset()

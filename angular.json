@@ -16,6 +16,12 @@
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
+      "i18n": {
+        "sourceLocale": "en",
+        "locales": {
+          "sw": "src/locale/messages.sw.xlf"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -64,6 +70,11 @@
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
+            },
+            "sw": {
+              "localize": [
+                "sw"
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -76,6 +87,9 @@
             },
             "development": {
               "browserTarget": "Frontload:build:development"
+            },
+            "sw": {
+              "browserTarget": "Frontload:build:sw"
             }
           },
           "defaultConfiguration": "development"

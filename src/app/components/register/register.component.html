@@ -1,10 +1,10 @@
 <form [formGroup]="registerForm" (ngSubmit)="register($event)">
     <div class="form-group">
-        <input formControlName="email" type="email" class="form-control" placeholder="Email" [disabled]="loading" required>
-        <div class="invalid-feedback">
+        <input formControlName="email" type="email" class="form-control" i18n-placeholder placeholder="Email" [disabled]="loading" required>
+        <div class="invalid-feedback" i18n>
             A valid email is required
         </div>
     </div>
     <app-password-form [enforceReqs]="true"></app-password-form>
-    <button type="submit" class="btn btn-primary" [disabled]="loading">Sign Up</button>
+    <button type="submit" class="btn btn-primary" [disabled]="loading" i18n>Sign Up</button>
 </form>

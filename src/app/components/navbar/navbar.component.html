@@ -2,15 +2,16 @@
     <div class="container-fluid">
         <a class="navbar-brand" routerLink="/">Frontload</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation" (click)="collapsed = !collapsed">
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" i18n-aria-label aria-label="Toggle navigation"
+            (click)="collapsed = !collapsed">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="navbar-collapse" [class.collapse]="collapsed" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-link" routerLink="/" routerLinkActive="active"
-                    [routerLinkActiveOptions]="{exact: true}">Home</a>
-                <a *ngIf="isLoggedIn" class="nav-link" routerLink="/account" routerLinkActive="active">Account</a>
-                <a *ngIf="isLoggedIn" class="nav-link" (click)="logout()">Sign Out</a>
+                <a *ngIf="isLoggedIn" class="nav-link" routerLink="/" routerLinkActive="active"
+                    [routerLinkActiveOptions]="{exact: true}" i18n>Home</a>
+                <a *ngIf="isLoggedIn" class="nav-link" routerLink="/account" routerLinkActive="active" i18n>Account</a>
+                <a *ngIf="isLoggedIn" class="nav-link" (click)="logout()" routerLink="/" i18n>Sign Out</a>
             </div>
         </div>
     </div>
