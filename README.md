@@ -13,7 +13,7 @@ The frontend/client counterpart to [Backdraft](https://github.com/ImranR98/Backd
     - [x] Make form validation under each field on submit instead of disabling submit entirely
 - [x] Add 'remember me' to login
 - [x] Add dark mode - could not add manual toggle for now
-- [ ] Internationalize client and add at least 1 other language (also need a way to determine default language and way to select language) - must be done for all strings in TS and template files
+- [x] Internationalize client and add at least 1 other language (also need a way to determine default language and way to select language) - must be done for all strings in TS and template files
 - [ ] Implement automated testing
 - [ ] Create a proper README
 - [ ] Revisit validation to see if it can be done without repetition in template

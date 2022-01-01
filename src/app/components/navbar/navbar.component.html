@@ -8,10 +8,10 @@
         </button>
         <div class="navbar-collapse" [class.collapse]="collapsed" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-link" routerLink="/" routerLinkActive="active"
+                <a *ngIf="isLoggedIn" class="nav-link" routerLink="/" routerLinkActive="active"
                     [routerLinkActiveOptions]="{exact: true}" i18n>Home</a>
                 <a *ngIf="isLoggedIn" class="nav-link" routerLink="/account" routerLinkActive="active" i18n>Account</a>
-                <a *ngIf="isLoggedIn" class="nav-link" (click)="logout()" i18n>Sign Out</a>
+                <a *ngIf="isLoggedIn" class="nav-link" (click)="logout()" routerLink="/" i18n>Sign Out</a>
             </div>
         </div>
     </div>
