@@ -45,7 +45,7 @@ Implementing new functionality in the application usually involves:
 
 ![Welcome Page](./screenshots/1.png) Welcome Page - Authentication
 
-![Internationalization (Swahili example)](/home/imranr/Main/Code/Other/Frontload/screenshots/1B.png) Internationalization (Swahili example)
+![Internationalization (Swahili example)](./screenshots/1B.png) Internationalization (Swahili example)
 
 ![Account Page](./screenshots/2.png) Account Page
 
