@@ -42,10 +42,19 @@ Implementing new functionality in the application usually involves:
 2. Form validation in this project is repetitive, because the validation on Angular's reactive forms is not picked up by Bootstrap. Therefore, the validation needs to be done once in the component class, and a second time on the template HTML; the latter doesn't actually validate anything, but is required to ensure validation errors are shown.
 
 ## Screenshots
-![Welcome Page](./screenshots/1.png)
-![Account Page](./screenshots/2.png)
-![Form Validation on Change Password Page](./screenshots/3.png)
-![Login Revocation](./screenshots/4.png)
-![Signup Page](./screenshots/5.png)
-![Responsive UI (Mobile View)](./screenshots/6.png)
-![Dark Mode](./screenshots/7.png)
+
+![Welcome Page](./screenshots/1.png) Welcome Page - Authentication
+
+![Internationalization (Swahili example)](/home/imranr/Main/Code/Other/Frontload/screenshots/1B.png) Internationalization (Swahili example)
+
+![Account Page](./screenshots/2.png) Account Page
+
+![Form Validation on Change Password Page](./screenshots/3.png) Form Validation on Change Password Page
+
+![Login Revocation](./screenshots/4.png) Login Revocation
+
+![Signup Page](./screenshots/5.png) Signup Page
+
+![Responsive UI (Mobile View)](./screenshots/6.png) Responsive UI (Mobile View)
+
+![Dark Mode](./screenshots/7.png) Dark Mode
