@@ -10,3 +10,7 @@ No manual toggle possible either */
 .form-group {
     @extend .mb-3;
 }
+
+h2 {
+    @extend .mb-4
+}

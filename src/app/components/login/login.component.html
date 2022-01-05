@@ -1,7 +1,8 @@
 <form [formGroup]="loginForm" (ngSubmit)="login($event)">
     <div class="form-group">
-        <input formControlName="email" type="email" class="form-control" i18n-placeholder placeholder="Email" [disabled]="loading"
-            required>
+        <label for="emailInput" class="form-label" i18n>Email</label>
+        <input id="emailInput" formControlName="email" type="email" class="form-control" placeholder="name@example.org"
+            [disabled]="loading" required>
         <div class="invalid-feedback" i18n>
             A valid email is required
         </div>

@@ -9,7 +9,7 @@ import { AbstractControl, FormControl, FormGroup, FormGroupDirective, Validation
 export class PasswordFormComponent implements OnInit {
 
   @Input() disabled: boolean = false
-  @Input() placeHolder: string = $localize `Password`
+  @Input() label: string = $localize `Password`
   @Input() controlName: string = 'password'
   @Input() enforceReqs: boolean = false
 

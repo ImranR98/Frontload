@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
     <body>
       <trans-unit id="ngb.alert.close" datatype="html">
         <source>Close</source>
@@ -364,19 +364,19 @@
         <target>Barua pepe halali inahitajika</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/forgot-password/forgot-password.component.html</context>
-          <context context-type="linenumber">5,7</context>
+          <context context-type="linenumber">6,8</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/login/login.component.html</context>
-          <context context-type="linenumber">5,7</context>
+          <context context-type="linenumber">6,8</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/register/register.component.html</context>
-          <context context-type="linenumber">4,6</context>
+          <context context-type="linenumber">6,8</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/change-email/change-email.component.html</context>
-          <context context-type="linenumber">4,6</context>
+          <context context-type="linenumber">7,9</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6972105223770675605" datatype="html">
@@ -384,11 +384,15 @@
         <target>Badilisha nenosiri</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/forgot-password/forgot-password.component.html</context>
-          <context context-type="linenumber">9</context>
+          <context context-type="linenumber">10</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/home/home.component.html</context>
           <context context-type="linenumber">19</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/reset-password/reset-password.component.html</context>
+          <context context-type="linenumber">1</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8854265099435220939" datatype="html">
@@ -404,7 +408,7 @@
         <target>Nikumbuke</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/login/login.component.html</context>
-          <context context-type="linenumber">13</context>
+          <context context-type="linenumber">14</context>
         </context-group>
       </trans-unit>
       <trans-unit id="840692109692540367" datatype="html">
@@ -412,7 +416,7 @@
         <target>Ingia</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/login/login.component.html</context>
-          <context context-type="linenumber">15</context>
+          <context context-type="linenumber">16</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/home/home.component.html</context>
@@ -451,12 +455,28 @@
           <context context-type="linenumber">14</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="187187500641108332" datatype="html">
+        <source>
+          <x id="INTERPOLATION" equiv-text="{{label}}" />
+        </source>
+        <target>
+          <x id="INTERPOLATION" equiv-text="{{label}}" />
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/password-form/password-form.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/account/account.component.html</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="3469656934992856985" datatype="html">
         <source>Minimum 8 characters</source>
         <target>Angalau herufi 8</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/password-form/password-form.component.html</context>
-          <context context-type="linenumber">4</context>
+          <context context-type="linenumber">6</context>
         </context-group>
       </trans-unit>
       <trans-unit id="205044832662301680" datatype="html">
@@ -464,7 +484,7 @@
         <target>Nenosiri linahitajika</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/password-form/password-form.component.html</context>
-          <context context-type="linenumber">8</context>
+          <context context-type="linenumber">10</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7127097731879540796" datatype="html">
@@ -472,7 +492,7 @@
         <target>Nenosiri ni fupi mno</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/password-form/password-form.component.html</context>
-          <context context-type="linenumber">9</context>
+          <context context-type="linenumber">11</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1431416938026210429" datatype="html">
@@ -488,7 +508,7 @@
         <target>Jisajili</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/register/register.component.html</context>
-          <context context-type="linenumber">9</context>
+          <context context-type="linenumber">11</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/home/home.component.html</context>
@@ -632,7 +652,11 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/change-email/change-email.component.html</context>
-          <context context-type="linenumber">9</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/change-email/change-email.component.html</context>
+          <context context-type="linenumber">12</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6582573664846559511" datatype="html">
@@ -644,11 +668,15 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/change-password/change-password.component.html</context>
-          <context context-type="linenumber">8,9</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/change-password/change-password.component.html</context>
+          <context context-type="linenumber">9,10</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/reset-password/reset-password.component.html</context>
-          <context context-type="linenumber">4,5</context>
+          <context context-type="linenumber">5,6</context>
         </context-group>
       </trans-unit>
       <trans-unit id="187187500641108332" datatype="html">
@@ -708,7 +736,7 @@
         <target>Barua Pepe Mpya</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/change-email/change-email.component.html</context>
-          <context context-type="linenumber">3</context>
+          <context context-type="linenumber">4</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1846542227840529109" datatype="html">
@@ -716,11 +744,11 @@
         <target>Nenosiri la Sasa</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/change-email/change-email.component.html</context>
-          <context context-type="linenumber">8</context>
+          <context context-type="linenumber">11</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/change-password/change-password.component.html</context>
-          <context context-type="linenumber">2</context>
+          <context context-type="linenumber">3</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1221596867309460035" datatype="html">
@@ -728,11 +756,11 @@
         <target>Nenosiri Mpya</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/change-password/change-password.component.html</context>
-          <context context-type="linenumber">3</context>
+          <context context-type="linenumber">4</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/reset-password/reset-password.component.html</context>
-          <context context-type="linenumber">2</context>
+          <context context-type="linenumber">3</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7460858748653115843" datatype="html">
@@ -740,7 +768,7 @@
         <target>Ondoka popote pengine</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/change-password/change-password.component.html</context>
-          <context context-type="linenumber">6</context>
+          <context context-type="linenumber">7</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8450994523775212991" datatype="html">

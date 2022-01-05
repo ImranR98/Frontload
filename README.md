@@ -55,6 +55,6 @@ Implementing new functionality in the application usually involves:
 
 ![Signup Page](./screenshots/5.png) Signup Page
 
-![Responsive UI (Mobile View)](./screenshots/6.png) Responsive UI (Mobile View)
+![Dark Mode](./screenshots/6.png) Dark Mode
 
-![Dark Mode](./screenshots/7.png) Dark Mode
+![Responsive UI (Mobile View)](./screenshots/7.png) Responsive UI (Mobile View)
