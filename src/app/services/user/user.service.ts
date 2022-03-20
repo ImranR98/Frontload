@@ -43,9 +43,6 @@ export class UserService {
     this.router.navigate(['/'])
   }
 
-  // Get the current URL (only base part)
-  private get currentURLBase() { return `${window.location.href.slice(0, -window.location.pathname.length)}` }
-
   // Make login request and save tokens if successful
   async login(email: string, password: string) {
     const result = await this.requestService.appRequest('login', 'post', { email, password }) as { token: string, refreshToken: string }
@@ -55,20 +52,28 @@ export class UserService {
     this.router.navigate(['/'])
   }
 
-  async signUp(email: string, password: string) {
-    await this.requestService.appRequest('signup', 'post', { email, password, clientVerificationURL: `${this.currentURLBase}/verify-email` })
+  async beginSignUp(email: string) {
+    return await this.requestService.appRequest('signup/begin', 'post', { email }) as { token: string }
   }
 
-  async verifyEmail(emailVerificationToken: string) {
-    await this.requestService.appRequest('verify-email', 'post', { emailVerificationToken })
+  async completeSignUp(email: string, password: string, token: string, code: string) {
+    await this.requestService.appRequest('signup/complete', 'post', { email, password, token, code })
   }
 
-  async requestPasswordReset(email: string) {
-    await this.requestService.appRequest('request-password-reset', 'post', { email, clientVerificationURL: `${this.currentURLBase}/reset-password` })
+  async beginResetPassword(email: string) {
+    return await this.requestService.appRequest('reset-password-begin', 'post', { email }) as { token: string }
   }
 
-  async resetPassword(passwordResetToken: string, password: string) {
-    await this.requestService.appRequest('reset-password', 'post', { passwordResetToken, password })
+  async completeResetPassword(email: string, password: string, token: string, code: string) {
+    await this.requestService.appRequest('reset-password-complete', 'post', { email, password, token, code })
+  }
+
+  async beginChangeEmail(password: string, email: string) {
+    return await this.requestService.appRequest('me/email/begin-change', 'post', { password, email }) as { token: string }
+  }
+
+  async completeChangeEmail(token: string, code: string, email: string) {
+    await this.requestService.appRequest('me/email/complete-change', 'post', { token, code, email })
   }
 
   async me() {
@@ -87,10 +92,6 @@ export class UserService {
       if (result?.refreshToken)
         this.refreshToken = result.refreshToken
       else this.logout()
-  }
-
-  async changeEmail(password: string, email: string) {
-    await this.requestService.appRequest('me/email', 'put', { password, email, clientVerificationURL: `${this.currentURLBase}/verify-email` })
   }
 
   // Used by the router to check if protected routes should be accessible
