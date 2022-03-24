@@ -1,6 +1,10 @@
 # 🧺 Frontload
 
-Angular based Web App to be used as a template or starting off point for frontend projects. This is designed to work with [Backdraft](https://github.com/ImranR98/Backdraft); see that project for more details.
+Angular based Web App to be used as a template or starting off point for frontend projects.
+
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=ImranR98_Frontload&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=ImranR98_Frontload) [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=ImranR98_Frontload&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=ImranR98_Frontload) [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=ImranR98_Frontload&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=ImranR98_Frontload) [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=ImranR98_Frontload&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=ImranR98_Frontload) [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=ImranR98_Frontload&metric=bugs)](https://sonarcloud.io/summary/new_code?id=ImranR98_Frontload)
+
+***This is designed to work with [Backdraft](https://github.com/ImranR98/Backdraft); see that project for more details.***
 
 ## Features
 - Frontend to all Backdraft endpoints/features.
