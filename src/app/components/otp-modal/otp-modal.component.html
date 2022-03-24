@@ -1,0 +1,16 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">{{title}}</h4>
+</div>
+<form [formGroup]="otpForm" (ngSubmit)="submit($event)">
+    <div class="modal-body">
+        <label for="otpInput" class="form-label">{{message}}</label>
+        <input id="otpInput" formControlName="code" type="text" class="form-control" [placeholder]="title" required [minlength]="digits" [maxlength]="digits" pattern="[0-9]*">
+        <div class="invalid-feedback" i18n>
+            {{digits}} digits are required
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-danger" (click)="activeModal.close(null)" i18n>Cancel</button>
+        <button ngbAutofocus type="submit" class="btn btn-success" i18n>Submit</button>
+    </div>
+</form>
