@@ -10,8 +10,6 @@ import { AppHttpInterceptor } from './app-http.interceptor';
 import { HomeComponent } from './pages/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 
-import { VerifyEmailComponent } from './pages/verify-email/verify-email.component';
-import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { AccountComponent } from './pages/account/account.component'
 import { CommonModule } from '@angular/common';
 import { ChangeEmailComponent } from './pages/change-email/change-email.component';
@@ -23,14 +21,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastComponent } from './components/toast/toast.component';
 import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
 import { PasswordFormComponent } from './components/password-form/password-form.component';
+import { OtpModalComponent } from './components/otp-modal/otp-modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     NavbarComponent,
-    VerifyEmailComponent,
-    ResetPasswordComponent,
     AccountComponent,
     ChangeEmailComponent,
     ChangePasswordComponent,
@@ -39,7 +36,8 @@ import { PasswordFormComponent } from './components/password-form/password-form.
     ForgotPasswordComponent,
     ToastComponent,
     ConfirmModalComponent,
-    PasswordFormComponent
+    PasswordFormComponent,
+    OtpModalComponent
   ],
   imports: [
     BrowserModule,
