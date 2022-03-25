@@ -1,7 +1,7 @@
 export interface AppErrorInterface {
     message: string;
     actionable: boolean;
-};
+}
 
 export class AppError implements AppErrorInterface {
     constructor(actionable: boolean = false, message: string = $localize `Unknown Error`) {
