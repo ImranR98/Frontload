@@ -5,8 +5,7 @@ import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+  templateUrl: './navbar.component.html'
 })
 export class NavbarComponent implements OnInit, OnDestroy {
 

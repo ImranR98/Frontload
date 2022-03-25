@@ -5,8 +5,6 @@ import { Injectable } from '@angular/core';
 })
 export class ToastService {
 
-  constructor() { }
-
   toasts: { message: string, className: string, delay: number }[] = [];
 
   showToast(message: string, type: 'info' | 'success' | 'danger' = 'info', delay: number = 10000) {

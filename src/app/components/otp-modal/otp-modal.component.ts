@@ -1,13 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-otp-modal',
-  templateUrl: './otp-modal.component.html',
-  styleUrls: ['./otp-modal.component.scss']
+  templateUrl: './otp-modal.component.html'
 })
-export class OtpModalComponent implements OnInit {
+export class OtpModalComponent {
 
   title: string = $localize`One Time Code`
   digits: number = 6
@@ -19,9 +18,6 @@ export class OtpModalComponent implements OnInit {
   });
 
   constructor(public activeModal: NgbActiveModal) { }
-
-  ngOnInit(): void {
-  }
 
   submit(event: any) {
     event.target.classList.add('was-validated')

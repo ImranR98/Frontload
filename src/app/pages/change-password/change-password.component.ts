@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastService } from 'src/app/services/toast/toast.service';
@@ -6,10 +6,9 @@ import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-change-password',
-  templateUrl: './change-password.component.html',
-  styleUrls: ['./change-password.component.scss']
+  templateUrl: './change-password.component.html'
 })
-export class ChangePasswordComponent implements OnInit {
+export class ChangePasswordComponent {
 
   constructor(private toastService: ToastService, private userService: UserService, private router: Router) { }
 
@@ -18,8 +17,6 @@ export class ChangePasswordComponent implements OnInit {
     newPassword: new FormControl(),
     revokeRefreshTokens: new FormControl(false)
   });
-
-  ngOnInit() { }
 
   set blocked(val: boolean) {
     val ? this.changePasswordForm.disable() : this.changePasswordForm.enable()

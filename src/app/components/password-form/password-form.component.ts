@@ -1,10 +1,9 @@
-import { AfterViewInit, Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, FormGroupDirective, ValidationErrors, Validators } from '@angular/forms';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { FormControl, FormGroupDirective, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-password-form',
-  templateUrl: './password-form.component.html',
-  styleUrls: ['./password-form.component.scss']
+  templateUrl: './password-form.component.html'
 })
 export class PasswordFormComponent implements OnInit, OnChanges {
 
@@ -22,8 +21,8 @@ export class PasswordFormComponent implements OnInit, OnChanges {
   // This could have been used to directly return an error message, but those should be in the template in order to maintain consistency with other formControls
   passwordErrorToShow() {
     const possibleCodesInPriorityOrder = ['required', 'minlength']
-    for (let i = 0; i < possibleCodesInPriorityOrder.length; i++) {
-      if (this.password?.errors?.[possibleCodesInPriorityOrder[i]]) return possibleCodesInPriorityOrder[i]
+    for (let code of possibleCodesInPriorityOrder) {
+      if (this.password?.errors?.[code]) return code
     }
     return 'other'
   }

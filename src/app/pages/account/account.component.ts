@@ -9,8 +9,7 @@ import { UAParser } from 'ua-parser-js'
 
 @Component({
   selector: 'app-account',
-  templateUrl: './account.component.html',
-  styleUrls: ['./account.component.scss']
+  templateUrl: './account.component.html'
 })
 export class AccountComponent implements OnInit {
 
@@ -34,7 +33,7 @@ export class AccountComponent implements OnInit {
     let finalString = ''
     if (UA.browser.name) {
       finalString += UA.browser.name
-      UA.browser.version ? finalString += ` ${UA.browser.version}` : ''
+      if (UA.browser.version) finalString += ` ${UA.browser.version}`
     } else {
       finalString += $localize`Unknown browser`
     }
@@ -45,7 +44,7 @@ export class AccountComponent implements OnInit {
     if (UA.os.name) {
       finalString += ' - '
       finalString += `${UA.os.name}`
-      UA.os.version ? finalString += ` ${UA.os.version}` : ''
+      if (UA.os.version) finalString += ` ${UA.os.version}`
     }
     return finalString
   }

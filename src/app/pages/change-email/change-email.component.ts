@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -9,10 +9,9 @@ import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-change-email',
-  templateUrl: './change-email.component.html',
-  styleUrls: ['./change-email.component.scss']
+  templateUrl: './change-email.component.html'
 })
-export class ChangeEmailComponent implements OnInit {
+export class ChangeEmailComponent {
 
   constructor(private toastService: ToastService, private userService: UserService, private router: Router, private modalService: NgbModal) { }
 
@@ -20,8 +19,6 @@ export class ChangeEmailComponent implements OnInit {
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl(),
   });
-
-  ngOnInit() { }
 
   set blocked(val: boolean) {
     val ? this.changeEmailForm.disable() : this.changeEmailForm.enable()
