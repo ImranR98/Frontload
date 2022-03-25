@@ -19,39 +19,38 @@ export class RegisterComponent implements OnInit {
     password: new FormControl()
   });
 
-  loading: boolean = false;
-
   constructor(private toastService: ToastService, private userService: UserService, private router: Router, private modalService: NgbModal) { }
 
   ngOnInit() {
     if (this.userService.isLoggedIn) this.router.navigate(['/'])
   }
 
+  set blocked(val: boolean) {
+    val ? this.registerForm.disable() : this.registerForm.enable()
+  }
+
   async register(event: any) {
     try {
       event.target.classList.add('was-validated')
       if (this.registerForm.valid) {
-        this.loading = true;
+        this.blocked = true;
         const token = await this.userService.beginSignUp(this.registerForm.controls['email'].value)
-        this.loading = false
         this.toastService.showToast($localize`A verification code has been emailed to you`, 'info')
         const modalRef = this.modalService.open(OtpModalComponent, { backdrop: 'static' })
         const val = await firstValueFrom(modalRef.closed)
         if (typeof val === 'string') {
-          this.loading = true
           await this.userService.completeSignUp(this.registerForm.controls['email'].value, this.registerForm.controls['password'].value, token.token, val)
           this.toastService.showToast($localize`Sign up successful`, 'success')
           this.registerForm.reset()
           event.target.classList.remove('was-validated')
-          this.loading = false
         } else {
           this.toastService.showToast($localize`Cancelled - You may try again`, 'danger')
         }
+        this.blocked = false
       }
     } catch (err) {
-      this.registerForm.reset()
       event.target.classList.remove('was-validated')
-      this.loading = false;
+      this.blocked = false;
     }
   }
 

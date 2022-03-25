@@ -14,8 +14,6 @@ import { UserService } from 'src/app/services/user/user.service';
 })
 export class ChangeEmailComponent implements OnInit {
 
-  loading: boolean = false
-
   constructor(private toastService: ToastService, private userService: UserService, private router: Router, private modalService: NgbModal) { }
 
   changeEmailForm = new FormGroup({
@@ -25,29 +23,30 @@ export class ChangeEmailComponent implements OnInit {
 
   ngOnInit() { }
 
+  set blocked(val: boolean) {
+    val ? this.changeEmailForm.disable() : this.changeEmailForm.enable()
+  }
+
   async changeEmail(event: any) {
     try {
       event.target.classList.add('was-validated')
       if (this.changeEmailForm.valid) {
-        this.loading = true;
+        this.blocked = true;
         const token = await this.userService.beginChangeEmail(this.changeEmailForm.controls['password'].value, this.changeEmailForm.controls['email'].value)
-        this.loading = false;
         this.toastService.showToast($localize`A verification code has been emailed to you`, 'info')
         const modalRef = this.modalService.open(OtpModalComponent, { backdrop: 'static' })
         const val = await firstValueFrom(modalRef.closed)
         if (typeof val === 'string') {
-          this.loading = true
           await this.userService.completeChangeEmail(token.token, val, this.changeEmailForm.controls['email'].value)
-          this.loading = false
           this.router.navigate(['/account'])
         } else {
           this.toastService.showToast($localize`Cancelled - You may try again`, 'danger')
         }
+        this.blocked = false
       }
     } catch (err) {
-      this.changeEmailForm.reset()
       event.target.classList.remove('was-validated')
-      this.loading = false;
+      this.blocked = false;
     }
   }
 

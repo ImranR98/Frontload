@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, FormGroupDirective, ValidationErrors, Validators } from '@angular/forms';
 
 @Component({
@@ -6,10 +6,10 @@ import { AbstractControl, FormControl, FormGroup, FormGroupDirective, Validation
   templateUrl: './password-form.component.html',
   styleUrls: ['./password-form.component.scss']
 })
-export class PasswordFormComponent implements OnInit {
+export class PasswordFormComponent implements OnInit, OnChanges {
 
   @Input() disabled: boolean = false
-  @Input() label: string = $localize `Password`
+  @Input() label: string = $localize`Password`
   @Input() controlName: string = 'password'
   @Input() enforceReqs: boolean = false
 
@@ -35,6 +35,16 @@ export class PasswordFormComponent implements OnInit {
     this.enforceReqs ?
       this.password?.setValidators([Validators.required, Validators.minLength(8)]) :
       this.password?.setValidators([Validators.required])
+  }
 
+  // Enable the password field whenever the @Input disabled property changes
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log('CHANGE')
+    for (let propName in changes) {
+      if (propName === 'disabled') {
+        console.log(this.disabled)
+        this.disabled ? this.password?.disable() : this.password?.enable()
+      }
+    }
   }
 }

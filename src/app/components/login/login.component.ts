@@ -16,8 +16,6 @@ export class LoginComponent implements OnInit {
     remember: new FormControl(false)
   });
 
-  loading: boolean = false;
-  
   constructor(private userService: UserService, private router: Router) { }
 
   loadSavedEmail() {
@@ -41,18 +39,21 @@ export class LoginComponent implements OnInit {
     this.loadSavedEmail()
   }
 
+  set blocked(val: boolean) {
+    val ? this.loginForm.disable() : this.loginForm.enable()
+  }
+
   async login(event: any) {
     try {
       event.target.classList.add('was-validated')
       if (this.loginForm.valid) {
+        this.blocked = true
         this.saveSavedEmail()
-        this.loading = true
         await this.userService.login(this.loginForm.controls['email'].value, this.loginForm.controls['password'].value)
-        this.loading = false
+        this.blocked = false
       }
     } catch (err) {
-      this.loading = false
-      this.loginForm.reset()
+      this.blocked = false
       event.target.classList.remove('was-validated')
       this.loadSavedEmail()
     }

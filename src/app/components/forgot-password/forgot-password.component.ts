@@ -19,37 +19,38 @@ export class ForgotPasswordComponent implements OnInit {
     password: new FormControl()
   });
 
-  loading: boolean = false;
-
   constructor(private toastService: ToastService, private userService: UserService, private router: Router, private modalService: NgbModal) { }
 
   ngOnInit() {
     if (this.userService.isLoggedIn) this.router.navigate(['/'])
   }
 
+  set blocked(val: boolean) {
+    val ? this.resetPasswordForm.disable() : this.resetPasswordForm.enable()
+  }
+
   async resetPassword(event: any) {
     try {
       event.target.classList.add('was-validated')
       if (this.resetPasswordForm.valid) {
-        this.loading = true;
+        this.blocked = true;
         const token = await this.userService.beginResetPassword(this.resetPasswordForm.controls['email'].value)
         this.toastService.showToast($localize`A verification code has been emailed to you`, 'info')
         const modalRef = this.modalService.open(OtpModalComponent, { backdrop: 'static' })
         const val = await firstValueFrom(modalRef.closed)
         if (typeof val === 'string') {
-          this.loading = true
           await this.userService.completeResetPassword(this.resetPasswordForm.controls['email'].value, this.resetPasswordForm.controls['password'].value, token.token, val)
           this.toastService.showToast($localize`Your password has been reset`, 'success')
-          this.loading = false
           this.router.navigate(['/'])
         } else {
           this.toastService.showToast($localize`Cancelled - You may try again`, 'danger')
         }
+        this.blocked = false
       }
     } catch (err) {
       this.resetPasswordForm.reset()
       event.target.classList.remove('was-validated')
-      this.loading = false;
+      this.blocked = false;
     }
 
   }

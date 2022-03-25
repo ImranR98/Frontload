@@ -3,11 +3,11 @@
     <div class="form-group">
         <label for="emailInput" class="form-label" i18n>New Email</label>
         <input id="emailInput" formControlName="email" type="email" class="form-control" placeholder="name@example.org"
-            [disabled]="loading" required>
+            required>
         <div class="invalid-feedback" i18n>
             A valid email is required
         </div>
     </div>
-    <app-password-form i18n-label label="Current Password" [disabled]="loading"></app-password-form>
-    <button type="submit" class="btn btn-primary" [disabled]="loading" i18n>Change Email</button>
+    <app-password-form i18n-label label="Current Password" [disabled]="changeEmailForm.disabled"></app-password-form>
+    <button type="submit" class="btn btn-primary" [disabled]="changeEmailForm.disabled" i18n>Change Email</button>
 </form>

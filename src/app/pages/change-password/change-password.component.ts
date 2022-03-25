@@ -11,8 +11,6 @@ import { UserService } from 'src/app/services/user/user.service';
 })
 export class ChangePasswordComponent implements OnInit {
 
-  loading: boolean = false
-
   constructor(private toastService: ToastService, private userService: UserService, private router: Router) { }
 
   changePasswordForm = new FormGroup({
@@ -23,20 +21,23 @@ export class ChangePasswordComponent implements OnInit {
 
   ngOnInit() { }
 
+  set blocked(val: boolean) {
+    val ? this.changePasswordForm.disable() : this.changePasswordForm.enable()
+  }
+
   async changePassword(event: any) {
     try {
       event.target.classList.add('was-validated')
       if (this.changePasswordForm.valid) {
-        this.loading = true;
+        this.blocked = true;
         await this.userService.changePassword(this.changePasswordForm.controls['password']?.value, this.changePasswordForm.controls['newPassword'].value, this.changePasswordForm.controls['revokeRefreshTokens'].value)
-        this.loading = false;
+        this.blocked = false;
         this.toastService.showToast($localize`Your password has been changed`, 'success')
         this.router.navigate(['/account'])
       }
     } catch (err) {
-      this.changePasswordForm.reset()
       event.target.classList.remove('was-validated')
-      this.loading = false;
+      this.blocked = false;
     }
   }
 
