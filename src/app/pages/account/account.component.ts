@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { firstValueFrom } from 'rxjs';
 import { ConfirmModalComponent } from 'src/app/components/confirm-modal/confirm-modal.component';
 import { ServerUserInterface } from 'src/app/models/user.models';
 import { UserService } from 'src/app/services/user/user.service';
@@ -18,8 +19,8 @@ export class AccountComponent implements OnInit {
   public isCollapsed = true
 
   loginsCollapseText = {
-    show: $localize `Show Logged In Devices`,
-    hide: $localize `Hide Logged In Devices`
+    show: $localize`Show Logged In Devices`,
+    hide: $localize`Hide Logged In Devices`
   }
 
   constructor(private modalService: NgbModal, private userService: UserService, private router: Router) { }
@@ -49,25 +50,28 @@ export class AccountComponent implements OnInit {
     return finalString
   }
 
-  getMe() {
-    this.userService.me().then(me => {
-      this.me = me
-    }).catch(err => this.router.navigate(['/']))
+  async getMe() {
+    try {
+      this.me = await this.userService.me()
+    } catch (err) {
+      this.router.navigate(['/'])
+    }
   }
 
-  revokeLogin(id: string) {
-    const modalRef = this.modalService.open(ConfirmModalComponent)
-    modalRef.componentInstance.message = $localize`Revoke this login?`
-    modalRef.closed.subscribe(val => {
+  async revokeLogin(id: string) {
+    try {
+      const modalRef = this.modalService.open(ConfirmModalComponent)
+      modalRef.componentInstance.message = $localize`Revoke this login?`
+      const val = await firstValueFrom(modalRef.closed)
       if (val) {
         this.loading = true
-        this.userService.revokeLogin(id).then(() => {
-          this.getMe()
-        }).catch(err => {
-
-        }).finally(() => this.loading = false)
+        await this.userService.revokeLogin(id)
+        await this.getMe()
+        this.loading = false
       }
-    })
+    } catch (err) {
+      this.loading = false
+    }
   }
 
 }

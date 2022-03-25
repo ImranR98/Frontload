@@ -23,19 +23,20 @@ export class ChangePasswordComponent implements OnInit {
 
   ngOnInit() { }
 
-  changePassword(event: any) {
-    event.target.classList.add('was-validated')
-    if (this.changePasswordForm.valid) {
-      this.loading = true;
-      this.userService.changePassword(this.changePasswordForm.controls['password']?.value, this.changePasswordForm.controls['newPassword'].value, this.changePasswordForm.controls['revokeRefreshTokens'].value).then(() => {
+  async changePassword(event: any) {
+    try {
+      event.target.classList.add('was-validated')
+      if (this.changePasswordForm.valid) {
+        this.loading = true;
+        await this.userService.changePassword(this.changePasswordForm.controls['password']?.value, this.changePasswordForm.controls['newPassword'].value, this.changePasswordForm.controls['revokeRefreshTokens'].value)
         this.loading = false;
-        this.toastService.showToast($localize `Your password has been changed`, 'success')
+        this.toastService.showToast($localize`Your password has been changed`, 'success')
         this.router.navigate(['/account'])
-      }).catch((err) => {
-        this.changePasswordForm.reset()
-        event.target.classList.remove('was-validated')
-        this.loading = false;
-      })
+      }
+    } catch (err) {
+      this.changePasswordForm.reset()
+      event.target.classList.remove('was-validated')
+      this.loading = false;
     }
   }
 

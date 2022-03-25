@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   });
 
   loading: boolean = false;
-
+  
   constructor(private userService: UserService, private router: Router) { }
 
   loadSavedEmail() {
@@ -41,18 +41,20 @@ export class LoginComponent implements OnInit {
     this.loadSavedEmail()
   }
 
-  login(event: any) {
-    event.target.classList.add('was-validated')
-    if (this.loginForm.valid) {
-      this.saveSavedEmail()
-      this.loading = true;
-      this.userService.login(this.loginForm.controls['email'].value, this.loginForm.controls['password'].value).catch(() => {
-        this.loginForm.reset()
-        event.target.classList.remove('was-validated')
-        this.loadSavedEmail()
-      }).finally(() => {
-        this.loading = false;
-      })
+  async login(event: any) {
+    try {
+      event.target.classList.add('was-validated')
+      if (this.loginForm.valid) {
+        this.saveSavedEmail()
+        this.loading = true
+        await this.userService.login(this.loginForm.controls['email'].value, this.loginForm.controls['password'].value)
+        this.loading = false
+      }
+    } catch (err) {
+      this.loading = false
+      this.loginForm.reset()
+      event.target.classList.remove('was-validated')
+      this.loadSavedEmail()
     }
   }
 

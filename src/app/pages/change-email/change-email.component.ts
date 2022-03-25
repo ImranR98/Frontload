@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { firstValueFrom } from 'rxjs';
 import { OtpModalComponent } from 'src/app/components/otp-modal/otp-modal.component';
 import { ToastService } from 'src/app/services/toast/toast.service';
 import { UserService } from 'src/app/services/user/user.service';
@@ -24,29 +25,29 @@ export class ChangeEmailComponent implements OnInit {
 
   ngOnInit() { }
 
-  changeEmail(event: any) {
-    event.target.classList.add('was-validated')
-    if (this.changeEmailForm.valid) {
-      this.loading = true;
-      this.userService.beginChangeEmail(this.changeEmailForm.controls['password'].value, this.changeEmailForm.controls['email'].value).then(token => {
+  async changeEmail(event: any) {
+    try {
+      event.target.classList.add('was-validated')
+      if (this.changeEmailForm.valid) {
+        this.loading = true;
+        const token = await this.userService.beginChangeEmail(this.changeEmailForm.controls['password'].value, this.changeEmailForm.controls['email'].value)
         this.loading = false;
         this.toastService.showToast($localize`A verification code has been emailed to you`, 'info')
         const modalRef = this.modalService.open(OtpModalComponent, { backdrop: 'static' })
-        modalRef.closed.subscribe(val => {
-          if (typeof val === 'string') {
-            this.loading = true
-            this.userService.completeChangeEmail(token.token, val, this.changeEmailForm.controls['email'].value).then(() => {
-              this.router.navigate(['/account'])
-            }).catch(() => { }).finally(() => this.loading = false)
-          } else {
-            this.toastService.showToast($localize`Cancelled - You may try again`, 'danger')
-          }
-        })
-      }).catch((err) => {
-        this.changeEmailForm.reset()
-        event.target.classList.remove('was-validated')
-        this.loading = false;
-      })
+        const val = await firstValueFrom(modalRef.closed)
+        if (typeof val === 'string') {
+          this.loading = true
+          await this.userService.completeChangeEmail(token.token, val, this.changeEmailForm.controls['email'].value)
+          this.loading = false
+          this.router.navigate(['/account'])
+        } else {
+          this.toastService.showToast($localize`Cancelled - You may try again`, 'danger')
+        }
+      }
+    } catch (err) {
+      this.changeEmailForm.reset()
+      event.target.classList.remove('was-validated')
+      this.loading = false;
     }
   }
 
