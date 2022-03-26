@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { ToastService } from 'src/app/services/toast/toast.service';
 import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { UserService } from 'src/app/services/user/user.service';
 })
 export class ChangePasswordComponent {
 
-  constructor(private toastService: ToastService, private userService: UserService, private router: Router) { }
+  constructor(private snackbar: MatSnackBar, private userService: UserService, private router: Router) { }
 
   changePasswordForm = new FormGroup({
     password: new FormControl(),
@@ -29,7 +29,7 @@ export class ChangePasswordComponent {
         this.blocked = true;
         await this.userService.changePassword(this.changePasswordForm.controls['password']?.value, this.changePasswordForm.controls['newPassword'].value, this.changePasswordForm.controls['revokeRefreshTokens'].value)
         this.blocked = false;
-        this.toastService.showToast($localize`Your password has been changed`, 'success')
+        this.snackbar.open($localize`Your password has been changed`)
         this.router.navigate(['/account'])
       }
     } catch (err) {

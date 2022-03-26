@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ConfirmModalComponent } from './confirm-modal.component';
+import { OtpBottomSheetComponent } from './otp-bottom-sheet.component';
 
-describe('ConfirmModalComponent', () => {
-  let component: ConfirmModalComponent;
-  let fixture: ComponentFixture<ConfirmModalComponent>;
+describe('OtpBottomSheetComponent', () => {
+  let component: OtpBottomSheetComponent;
+  let fixture: ComponentFixture<OtpBottomSheetComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ConfirmModalComponent ]
+      declarations: [ OtpBottomSheetComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ConfirmModalComponent);
+    fixture = TestBed.createComponent(OtpBottomSheetComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

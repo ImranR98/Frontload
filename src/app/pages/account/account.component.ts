@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { Router } from '@angular/router';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { firstValueFrom } from 'rxjs';
-import { ConfirmModalComponent } from 'src/app/components/confirm-modal/confirm-modal.component';
+import { ConfirmBottomSheetComponent } from 'src/app/components/confirm-bottom-sheet/confirm-bottom-sheet.component';
 import { ServerUserInterface } from 'src/app/models/user.models';
 import { UserService } from 'src/app/services/user/user.service';
 import { UAParser } from 'ua-parser-js'
@@ -15,14 +15,14 @@ export class AccountComponent implements OnInit {
 
   me: ServerUserInterface | null = null
   loading: boolean = false
-  public isCollapsed = true
+  isCollapsed = true
 
   loginsCollapseText = {
     show: $localize`Show Logged In Devices`,
     hide: $localize`Hide Logged In Devices`
   }
 
-  constructor(private modalService: NgbModal, private userService: UserService, private router: Router) { }
+  constructor(private bottomSheet: MatBottomSheet, private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
     this.getMe()
@@ -59,9 +59,8 @@ export class AccountComponent implements OnInit {
 
   async revokeLogin(id: string) {
     try {
-      const modalRef = this.modalService.open(ConfirmModalComponent)
-      modalRef.componentInstance.message = $localize`Revoke this login?`
-      const val = await firstValueFrom(modalRef.closed)
+      const sheetRef = this.bottomSheet.open(ConfirmBottomSheetComponent, { data: { message: $localize`Revoke this login?` } })
+      const val = await firstValueFrom(sheetRef.afterDismissed())
       if (val) {
         this.loading = true
         await this.userService.revokeLogin(id)

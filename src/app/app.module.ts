@@ -6,6 +6,17 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { ReactiveFormsModule } from '@angular/forms';
+
+import { MatButtonModule } from '@angular/material/button'
+import { MatCheckboxModule } from '@angular/material/checkbox'
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet'
+import { MatExpansionModule } from '@angular/material/expansion'
+import { MatFormFieldModule } from '@angular/material/form-field'
+import { MatInputModule } from '@angular/material/input'
+import { MatSnackBarModule } from '@angular/material/snack-bar'
+import { MatToolbarModule } from '@angular/material/toolbar'
+import { MatProgressBarModule } from '@angular/material/progress-bar'
+
 import { AppHttpInterceptor } from './app-http.interceptor';
 import { HomeComponent } from './pages/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -17,11 +28,9 @@ import { ChangePasswordComponent } from './pages/change-password/change-password
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ToastComponent } from './components/toast/toast.component';
-import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
 import { PasswordFormComponent } from './components/password-form/password-form.component';
-import { OtpModalComponent } from './components/otp-modal/otp-modal.component';
+import { ConfirmBottomSheetComponent } from './components/confirm-bottom-sheet/confirm-bottom-sheet.component';
+import { OtpBottomSheetComponent } from './components/otp-bottom-sheet/otp-bottom-sheet.component';
 
 @NgModule({
   declarations: [
@@ -34,10 +43,9 @@ import { OtpModalComponent } from './components/otp-modal/otp-modal.component';
     LoginComponent,
     RegisterComponent,
     ForgotPasswordComponent,
-    ToastComponent,
-    ConfirmModalComponent,
     PasswordFormComponent,
-    OtpModalComponent
+    ConfirmBottomSheetComponent,
+    OtpBottomSheetComponent
   ],
   imports: [
     BrowserModule,
@@ -46,13 +54,20 @@ import { OtpModalComponent } from './components/otp-modal/otp-modal.component';
     HttpClientModule,
     ReactiveFormsModule,
     CommonModule,
-    NgbModule
+    MatButtonModule,
+    MatCheckboxModule,
+    MatBottomSheetModule,
+    MatExpansionModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSnackBarModule,
+    MatToolbarModule,
+    MatProgressBarModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: AppHttpInterceptor,
     multi: true
-  }],
-  bootstrap: [AppComponent]
+  }]
 })
 export class AppModule { }

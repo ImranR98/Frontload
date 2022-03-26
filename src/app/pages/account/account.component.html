@@ -4,42 +4,36 @@
             <h5 class="card-title">{{me.email}}</h5>
             <div class="d-grid gap-2 d-md-block">
                 <div class="btn-group">
-                    <button type="button" class="btn btn-outline-primary" routerLink="/change-email"
-                        [disabled]="loading" i18n>Change
+                    <button mat-button color="primary" routerLink="/change-email" [disabled]="loading" i18n>Change
                         Email</button>
-                    <button type="button" class="btn btn-outline-primary" routerLink="/change-password"
-                        [disabled]="loading" i18n>Change
+                    <button mat-button color="primary" routerLink="/change-password" [disabled]="loading" i18n>Change
                         Password</button>
                 </div>
             </div>
         </div>
     </div>
-    <div class="card card-body">
-        <div class="d-grid gap-2 d-md-block">
-            <button type="button" class="btn btn-outline-primary" (click)="collapse.toggle()"
-                [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
+    <mat-expansion-panel (opened)="isCollapsed = false" (closed)="isCollapsed = true">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
                 {{isCollapsed ? loginsCollapseText.show : loginsCollapseText.hide}}
-            </button>
-        </div>
-        <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
-            <div *ngFor="let login of me?.refreshTokens">
-                <hr>
-                <div class="row justify-content-between align-items-center">
-                    <div class="col-auto">
-                        <h5 i18n class="card-title">{{formatUAString(login.userAgent)}}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">{{login.date | date: 'medium' }}</h6>
-                    </div>
-                    <div class="col-auto">
-                        <button type="button" class="btn btn-danger" (click)="revokeLogin(login.id)"
-                            [disabled]="loading" i18n>Revoke
-                            Login</button>
-                    </div>
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div *ngFor="let login of me?.refreshTokens">
+            <hr>
+            <div class="row justify-content-between align-items-center">
+                <div class="col-auto">
+                    <h5 i18n class="card-title">{{formatUAString(login.userAgent)}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{login.date | date: 'medium' }}</h6>
+                </div>
+                <div class="col-auto">
+                    <button mat-button color="warn" (click)="revokeLogin(login.id)" [disabled]="loading" i18n>Revoke
+                        Login</button>
                 </div>
             </div>
         </div>
-    </div>
+    </mat-expansion-panel>
 </div>
 
 <p *ngIf="!me">
-    <ngb-progressbar [value]="100" [striped]="true" [animated]="true"></ngb-progressbar>
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
 </p>

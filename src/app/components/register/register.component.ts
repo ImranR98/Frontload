@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { firstValueFrom } from 'rxjs';
-import { ToastService } from 'src/app/services/toast/toast.service';
 import { UserService } from 'src/app/services/user/user.service';
-import { OtpModalComponent } from '../otp-modal/otp-modal.component';
+import { OtpBottomSheetComponent } from '../otp-bottom-sheet/otp-bottom-sheet.component';
 
 @Component({
   selector: 'app-register',
@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
     password: new FormControl()
   });
 
-  constructor(private toastService: ToastService, private userService: UserService, private router: Router, private modalService: NgbModal) { }
+  constructor(private snackbar: MatSnackBar, private userService: UserService, private router: Router, private bottomSheet: MatBottomSheet) { }
 
   ngOnInit() {
     if (this.userService.isLoggedIn) this.router.navigate(['/'])
@@ -34,16 +34,16 @@ export class RegisterComponent implements OnInit {
       if (this.registerForm.valid) {
         this.blocked = true;
         const token = await this.userService.beginSignUp(this.registerForm.controls['email'].value)
-        this.toastService.showToast($localize`A verification code has been emailed to you`, 'info')
-        const modalRef = this.modalService.open(OtpModalComponent, { backdrop: 'static' })
-        const val = await firstValueFrom(modalRef.closed)
+        this.snackbar.open($localize`A verification code has been emailed to you`)
+        const sheetRef = this.bottomSheet.open(OtpBottomSheetComponent, { disableClose: true })
+        const val = await firstValueFrom(sheetRef.afterDismissed())
         if (typeof val === 'string') {
           await this.userService.completeSignUp(this.registerForm.controls['email'].value, this.registerForm.controls['password'].value, token.token, val)
-          this.toastService.showToast($localize`Sign up successful`, 'success')
+          this.snackbar.open($localize`Sign up successful`)
           this.registerForm.reset()
           event.target.classList.remove('was-validated')
         } else {
-          this.toastService.showToast($localize`Cancelled - You may try again`, 'danger')
+          this.snackbar.open($localize`Cancelled - You may try again`)
         }
         this.blocked = false
       }

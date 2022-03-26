@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { firstValueFrom } from 'rxjs';
-import { OtpModalComponent } from 'src/app/components/otp-modal/otp-modal.component';
-import { ToastService } from 'src/app/services/toast/toast.service';
+import { OtpBottomSheetComponent } from 'src/app/components/otp-bottom-sheet/otp-bottom-sheet.component';
 import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
@@ -13,7 +13,7 @@ import { UserService } from 'src/app/services/user/user.service';
 })
 export class ChangeEmailComponent {
 
-  constructor(private toastService: ToastService, private userService: UserService, private router: Router, private modalService: NgbModal) { }
+  constructor(private snackbar: MatSnackBar, private userService: UserService, private router: Router, private bottomSheet: MatBottomSheet) { }
 
   changeEmailForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -30,14 +30,14 @@ export class ChangeEmailComponent {
       if (this.changeEmailForm.valid) {
         this.blocked = true;
         const token = await this.userService.beginChangeEmail(this.changeEmailForm.controls['password'].value, this.changeEmailForm.controls['email'].value)
-        this.toastService.showToast($localize`A verification code has been emailed to you`, 'info')
-        const modalRef = this.modalService.open(OtpModalComponent, { backdrop: 'static' })
-        const val = await firstValueFrom(modalRef.closed)
+        this.snackbar.open($localize`A verification code has been emailed to you`)
+        const sheetRef = this.bottomSheet.open(OtpBottomSheetComponent, { disableClose: true })
+        const val = await firstValueFrom(sheetRef.afterDismissed())
         if (typeof val === 'string') {
           await this.userService.completeChangeEmail(token.token, val, this.changeEmailForm.controls['email'].value)
           this.router.navigate(['/account'])
         } else {
-          this.toastService.showToast($localize`Cancelled - You may try again`, 'danger')
+          this.snackbar.open($localize`Cancelled - You may try again`)
         }
         this.blocked = false
       }
