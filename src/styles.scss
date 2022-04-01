@@ -32,3 +32,14 @@ $Frontload-theme: mat.define-light-theme((
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include mat.all-component-themes($Frontload-theme);
+
+// Everything Else
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.stdMargin {
+  margin: 1rem;
+}

@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { ReactiveFormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { MatButtonModule } from '@angular/material/button'
 import { MatCheckboxModule } from '@angular/material/checkbox'
@@ -55,6 +56,7 @@ import { OtpBottomSheetComponent } from './components/otp-bottom-sheet/otp-botto
     HttpClientModule,
     ReactiveFormsModule,
     CommonModule,
+    FlexLayoutModule,
     MatButtonModule,
     MatCheckboxModule,
     MatBottomSheetModule,
