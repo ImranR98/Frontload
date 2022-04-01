@@ -18,6 +18,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar'
 import { MatToolbarModule } from '@angular/material/toolbar'
 import { MatProgressBarModule } from '@angular/material/progress-bar'
 import { MatTabsModule } from '@angular/material/tabs'
+import { MatDividerModule } from '@angular/material/divider'
 
 import { AppHttpInterceptor } from './app-http.interceptor';
 import { HomeComponent } from './pages/home/home.component';
@@ -66,7 +67,8 @@ import { OtpBottomSheetComponent } from './components/otp-bottom-sheet/otp-botto
     MatSnackBarModule,
     MatToolbarModule,
     MatProgressBarModule,
-    MatTabsModule
+    MatTabsModule,
+    MatDividerModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

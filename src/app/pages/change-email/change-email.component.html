@@ -1,13 +1,9 @@
 <h2 i18n>Change Email</h2>
-<form [formGroup]="changeEmailForm" (ngSubmit)="changeEmail($event)">
-    <div class="form-group">
-        <label for="emailInput" class="form-label" i18n>New Email</label>
-        <input id="emailInput" formControlName="email" type="email" class="form-control" placeholder="name@example.org"
-            required>
-        <div class="invalid-feedback" i18n>
-            A valid email is required
-        </div>
-    </div>
+<form [formGroup]="changeEmailForm" (ngSubmit)="changeEmail($event)" fxLayout="column" fxLayoutGap="1rem">
+    <mat-form-field fxLayout="column">
+        <mat-label i18n>New Email</mat-label>
+        <input matInput formControlName="email" type="email" placeholder="name@example.org">
+    </mat-form-field>
     <app-password-form i18n-label label="Current Password" [disabled]="changeEmailForm.disabled"></app-password-form>
     <button mat-button type="submit" color="primary" [disabled]="changeEmailForm.disabled" i18n>Change Email</button>
 </form>

@@ -1,11 +1,8 @@
-<form [formGroup]="otpForm" (ngSubmit)="submit($event)">
-    <div>
-        <label for="otpInput" class="form-label">{{data.message}}</label>
-        <input id="otpInput" formControlName="code" type="text" class="form-control" [placeholder]="data.name" required [minlength]="data.digits" [maxlength]="data.digits" pattern="[0-9]*">
-        <div class="invalid-feedback" i18n>
-            {{data.digits}} digits are required
-        </div>
-    </div>
+<form [formGroup]="otpForm" (ngSubmit)="submit($event)" fxLayout="column" fxLayoutGap="1rem">
+    <mat-form-field fxLayout="column">
+        <mat-label>{{data.message}}</mat-label>
+        <input matInput formControlName="code" type="text" [placeholder]="data.name">
+    </mat-form-field>
     <div fxLayout="row" fxLayoutGap="1rem">
         <button mat-button color="warn" (click)="close()" i18n>Cancel</button>
         <button mat-button ngbAutofocus type="submit" color="primary" i18n>Submit</button>
