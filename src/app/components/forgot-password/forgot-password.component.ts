@@ -13,6 +13,8 @@ import { OtpBottomSheetComponent } from '../otp-bottom-sheet/otp-bottom-sheet.co
 })
 export class ForgotPasswordComponent implements OnInit {
 
+  newPasswordLabel = $localize`New Password`
+
   resetPasswordForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl()
