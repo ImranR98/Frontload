@@ -8,13 +8,14 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class OtpBottomSheetComponent {
 
-  constructor(private bottomSheetRef: MatBottomSheetRef, @Inject(MAT_BOTTOM_SHEET_DATA) public data: { digits: number, message: string, name: string } = { digits: 6, message: $localize`Enter the ${data.digits} digit code that was sent to you.`, name: $localize`One Time Code` }) { }
+  constructor(private bottomSheetRef: MatBottomSheetRef, @Inject(MAT_BOTTOM_SHEET_DATA) public data: { digits: number, name: string }) { }
 
   otpForm = new FormGroup({
     code: new FormControl('', [Validators.required, Validators.pattern('[0-9]*'), Validators.minLength(this.data.digits), Validators.maxLength(this.data.digits)])
   })
 
-  close() {
+  close(event: Event) {
+    event.preventDefault()
     this.bottomSheetRef.dismiss(null)
   }
 

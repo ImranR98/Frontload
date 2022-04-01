@@ -1,5 +1,8 @@
-<h3>{{data.message}}</h3>
-<div fxLayout="row" fxLayoutGap="1rem">
-    <button mat-stroked-button color="warn" (click)="close(false)" i18n>No</button>
-    <button mat-stroked-button ngbAutofocus color="primary" (click)="close(true)" i18n>Yes</button>
+<h2 i18n>Confirmation</h2>
+<div fxLayout="column" fxLayoutAlign.lt-md="center center">
+    <h3>{{data.message}}</h3>
+    <div fxLayout="row" fxLayoutGap="1rem">
+        <button mat-stroked-button color="warn" (click)="close(false)" fxFlex="50%" i18n>No</button>
+        <button mat-stroked-button ngbAutofocus color="primary" (click)="close(true)" fxFlex="50%" i18n>Yes</button>
+    </div>
 </div>

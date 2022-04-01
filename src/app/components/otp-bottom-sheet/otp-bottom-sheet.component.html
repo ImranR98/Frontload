@@ -1,10 +1,11 @@
+<h2>{{data.name}}</h2>
 <form [formGroup]="otpForm" (ngSubmit)="submit($event)" fxLayout="column" fxLayoutGap="1rem">
     <mat-form-field fxLayout="column">
-        <mat-label>{{data.message}}</mat-label>
-        <input matInput formControlName="code" type="text" [placeholder]="data.name">
+        <mat-label i18n>{{data.digits}} Digit code</mat-label>
+        <input matInput formControlName="code">
     </mat-form-field>
     <div fxLayout="row" fxLayoutGap="1rem">
-        <button mat-stroked-button color="warn" (click)="close()" i18n>Cancel</button>
-        <button mat-stroked-button ngbAutofocus type="submit" color="primary" i18n>Submit</button>
+        <button mat-stroked-button color="warn" (click)="close($event)" i18n>Cancel</button>
+        <button mat-stroked-button ngbAutofocus type="submit" color="primary" [disabled]="!otpForm.valid" i18n>Submit</button>
     </div>
 </form>

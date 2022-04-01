@@ -7,7 +7,7 @@ import { MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA } from '@angular/material/bott
 })
 export class ConfirmBottomSheetComponent {
 
-  constructor(private bottomSheetRef: MatBottomSheetRef, @Inject(MAT_BOTTOM_SHEET_DATA) public data: { message: string } = { message: $localize`Are you sure?` }) { }
+  constructor(private bottomSheetRef: MatBottomSheetRef, @Inject(MAT_BOTTOM_SHEET_DATA) public data: { message: string }) { }
 
   close(result: boolean): void {
     this.bottomSheetRef.dismiss(result)

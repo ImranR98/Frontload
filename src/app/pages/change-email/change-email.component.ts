@@ -30,14 +30,11 @@ export class ChangeEmailComponent {
       if (this.changeEmailForm.valid) {
         this.blocked = true;
         const token = await this.userService.beginChangeEmail(this.changeEmailForm.controls['password'].value, this.changeEmailForm.controls['email'].value)
-        this.snackbar.open($localize`A verification code has been emailed to you`)
-        const sheetRef = this.bottomSheet.open(OtpBottomSheetComponent, { disableClose: true })
+        const sheetRef = this.bottomSheet.open(OtpBottomSheetComponent, { disableClose: true, data: { digits: 6, name: $localize`Email Verification Code` } })
         const val = await firstValueFrom(sheetRef.afterDismissed())
         if (typeof val === 'string') {
           await this.userService.completeChangeEmail(token.token, val, this.changeEmailForm.controls['email'].value)
           this.router.navigate(['/account'])
-        } else {
-          this.snackbar.open($localize`Cancelled - You may try again`)
         }
         this.blocked = false
       }
