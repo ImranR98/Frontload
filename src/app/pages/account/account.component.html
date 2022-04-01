@@ -1,9 +1,9 @@
 <div *ngIf="me" fxLayout="column" fxLayoutGap="1rem">
-    <h5>{{me.email}}</h5>
+    <h2 class="breakWord">{{me.email}}</h2>
     <div fxLayout="row" fxLayoutGap="1rem">
-        <button mat-button color="primary" routerLink="/change-email" [disabled]="loading" i18n>Change
+        <button mat-stroked-button color="primary" routerLink="/change-email" [disabled]="loading" i18n>Change
             Email</button>
-        <button mat-button color="primary" routerLink="/change-password" [disabled]="loading" i18n>Change
+        <button mat-stroked-button color="primary" routerLink="/change-password" [disabled]="loading" i18n>Change
             Password</button>
     </div>
     <mat-expansion-panel (opened)="isCollapsed = false" (closed)="isCollapsed = true">
@@ -15,10 +15,13 @@
         <div fxLayout="column" fxLayoutGap="1rem">
             <div *ngFor="let login of me?.refreshTokens" fxLayout="column" fxLayoutGap="1rem">
                 <mat-divider></mat-divider>
-                <h5 i18n class="card-title">{{formatUAString(login.userAgent)}}</h5>
-                <h6 class="card-subtitle mb-2 text-muted">{{login.date | date: 'medium' }}</h6>
-                <button mat-button color="warn" (click)="revokeLogin(login.id)" [disabled]="loading" i18n>Revoke
-                    Login</button>
+                <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="1rem" fxLayoutAlign="space-between center"
+                    fxLayoutAlign.lt-sm="default default">
+                    <span i18n class="card-title">{{formatUAString(login.userAgent)}} - {{login.date | date: 'medium' }}
+                    </span>
+                    <button mat-stroked-button color="warn" (click)="revokeLogin(login.id)" [disabled]="loading" i18n>Revoke
+                        Login</button>
+                </div>
             </div>
         </div>
     </mat-expansion-panel>

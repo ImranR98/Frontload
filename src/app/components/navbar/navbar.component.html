@@ -1,9 +1,20 @@
-<mat-toolbar color="primary" fxLayout="row" fxLayoutGap="1rem">
+<mat-toolbar color="primary" fxLayout="row" fxLayoutGap="1rem" fxLayoutAlign="space-between center">
     <span>Frontload</span>
-    <div fxLayout="row" fxLayoutGap="1rem" *ngIf="isLoggedIn">
-        <button mat-button routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
-            i18n>Home</button>
-        <button mat-button routerLink="/account" routerLinkActive="active" i18n>Account</button>
-        <button mat-button (click)="logout()" routerLink="/" i18n>Sign Out</button>
+    <div *ngIf="isLoggedIn">
+        <div fxLayout="row" fxLayoutGap="1rem" fxHide fxShow.sm fxShow.gt-sm>
+            <button mat-button routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+                i18n>Home</button>
+            <button mat-button routerLink="/account" routerLinkActive="active" i18n>Account</button>
+            <button mat-button (click)="logout()" routerLink="/" i18n>Sign Out</button>
+        </div>
+        <div fxHide fxShow.lt-sm>
+            <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+                    i18n>Home</button>
+                <button mat-menu-item routerLink="/account" routerLinkActive="active" i18n>Account</button>
+                <button mat-menu-item (click)="logout()" routerLink="/" i18n>Sign Out</button>
+            </mat-menu>
+        </div>
     </div>
 </mat-toolbar>
