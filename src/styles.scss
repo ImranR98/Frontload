@@ -40,6 +40,22 @@ html, body {
   margin: 0;
 }
 
+.outerPageWrapper {
+  margin: 1rem;
+  .xs, .sm {
+    width: 100%;
+  }
+  .md {
+    width: 90%;
+  }
+  .lg {
+    width: 80%;
+  }
+  .xl {
+    width: 60%;
+  }
+}
+
 .stdMargin {
   margin: 1rem;
 }
