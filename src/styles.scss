@@ -1,37 +1,41 @@
+// Material Theming
 
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
 @use '@angular/material' as mat;
-// Plus imports for other components in your app.
 
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
 @include mat.core();
 
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
-$Frontload-primary: mat.define-palette(mat.$indigo-palette);
-$Frontload-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$Frontload-primary-light: mat.define-palette(mat.$indigo-palette);
+$Frontload-accent-light: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$Frontload-warn-light: mat.define-palette(mat.$red-palette);
 
-// The warn palette is optional (defaults to red).
-$Frontload-warn: mat.define-palette(mat.$red-palette);
-
-// Create the theme object. A theme consists of configurations for individual
-// theming systems such as "color" or "typography".
-$Frontload-theme: mat.define-light-theme((
+$Frontload-theme-light: mat.define-light-theme((
   color: (
-    primary: $Frontload-primary,
-    accent: $Frontload-accent,
-    warn: $Frontload-warn,
+    primary: $Frontload-primary-light,
+    accent: $Frontload-accent-light,
+    warn: $Frontload-warn-light,
   )
 ));
 
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
-@include mat.all-component-themes($Frontload-theme);
+$Frontload-primary-dark: mat.define-palette(mat.$green-palette, A400);
+$Frontload-accent-dark: mat.define-palette(mat.$deep-purple-palette, A100);
+$Frontload-warn-dark: mat.define-palette(mat.$red-palette, A100);
+
+$Frontload-theme-dark: mat.define-dark-theme((
+  color: (
+    primary: $Frontload-primary-dark,
+    accent: $Frontload-accent-dark,
+    warn: $Frontload-warn-dark,
+  )
+));
+
+@media (prefers-color-scheme: light) {
+  @include mat.all-component-themes($Frontload-theme-light);
+}
+
+@media (prefers-color-scheme: dark) {
+  @include mat.all-component-themes($Frontload-theme-dark);
+}
+
 
 // Everything Else
 

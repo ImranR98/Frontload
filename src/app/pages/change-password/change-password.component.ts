@@ -24,7 +24,6 @@ export class ChangePasswordComponent {
 
   async changePassword(event: any) {
     try {
-      event.target.classList.add('was-validated')
       if (this.changePasswordForm.valid) {
         this.blocked = true;
         await this.userService.changePassword(this.changePasswordForm.controls['password']?.value, this.changePasswordForm.controls['newPassword'].value, this.changePasswordForm.controls['revokeRefreshTokens'].value)
@@ -33,7 +32,6 @@ export class ChangePasswordComponent {
         this.router.navigate(['/account'])
       }
     } catch (err) {
-      event.target.classList.remove('was-validated')
       this.blocked = false;
     }
   }

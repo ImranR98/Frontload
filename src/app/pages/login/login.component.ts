@@ -46,7 +46,6 @@ export class LoginComponent implements OnInit {
 
   async login(event: any) {
     try {
-      event.target.classList.add('was-validated')
       if (this.loginForm.valid) {
         this.blocked = true
         this.saveSavedEmail()
@@ -55,7 +54,6 @@ export class LoginComponent implements OnInit {
       }
     } catch (err) {
       this.blocked = false
-      event.target.classList.remove('was-validated')
       this.loadSavedEmail()
     }
   }

@@ -5,5 +5,9 @@
         <input matInput formControlName="email" type="email" placeholder="name@example.org">
     </mat-form-field>
     <app-password-form [disabled]="registerForm.disabled" [enforceReqs]="true"></app-password-form>
-    <button mat-stroked-button type="submit" color="primary" [disabled]="registerForm.disabled || !registerForm.valid" i18n>Sign Up</button>
+    <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="1rem" fxLayoutAlign="center center"
+        fxLayoutAlign.lt-sm="default">
+        <button mat-stroked-button type="submit" color="primary"
+            [disabled]="registerForm.disabled || !registerForm.valid" i18n>Sign Up</button>
+    </div>
 </form>

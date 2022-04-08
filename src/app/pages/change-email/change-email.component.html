@@ -5,5 +5,9 @@
         <input matInput formControlName="email" type="email" placeholder="name@example.org">
     </mat-form-field>
     <app-password-form i18n-label label="Current Password" [disabled]="changeEmailForm.disabled"></app-password-form>
-    <button mat-stroked-button type="submit" color="primary" [disabled]="changeEmailForm.disabled || !changeEmailForm.valid" i18n>Change Email</button>
+    <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="1rem" fxLayoutAlign="center center"
+        fxLayoutAlign.lt-sm="default">
+        <button mat-stroked-button type="submit" color="primary"
+            [disabled]="changeEmailForm.disabled || !changeEmailForm.valid" i18n>Change Email</button>
+    </div>
 </form>

@@ -20,7 +20,6 @@ export class OtpBottomSheetComponent {
   }
 
   submit(event: any) {
-    event.target.classList.add('was-validated')
     if (this.otpForm.valid)
       this.bottomSheetRef.dismiss(this.otpForm.controls['code'].value)
   }

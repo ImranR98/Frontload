@@ -32,7 +32,6 @@ export class ForgotPasswordComponent implements OnInit {
 
   async resetPassword(event: any) {
     try {
-      event.target.classList.add('was-validated')
       if (this.resetPasswordForm.valid) {
         this.blocked = true;
         const token = await this.userService.beginResetPassword(this.resetPasswordForm.controls['email'].value)
@@ -50,7 +49,6 @@ export class ForgotPasswordComponent implements OnInit {
       }
     } catch (err) {
       this.resetPasswordForm.reset()
-      event.target.classList.remove('was-validated')
       this.blocked = false;
     }
 

@@ -6,5 +6,8 @@
     </mat-form-field>
     <app-password-form [disabled]="loginForm.disabled"></app-password-form>
     <mat-checkbox formControlName="remember" i18n>Remember me</mat-checkbox>
-    <button mat-stroked-button type="submit" color="primary" [disabled]="loginForm.disabled || !loginForm.valid" i18n>Sign In</button>
+    <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="1rem" fxLayoutAlign="center center" fxLayoutAlign.lt-sm="default">
+        <button mat-stroked-button type="submit" color="primary" [disabled]="loginForm.disabled || !loginForm.valid"
+            i18n>Sign In</button>
+    </div>
 </form>

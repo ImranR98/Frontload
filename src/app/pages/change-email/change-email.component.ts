@@ -26,7 +26,6 @@ export class ChangeEmailComponent {
 
   async changeEmail(event: any) {
     try {
-      event.target.classList.add('was-validated')
       if (this.changeEmailForm.valid) {
         this.blocked = true;
         const token = await this.userService.beginChangeEmail(this.changeEmailForm.controls['password'].value, this.changeEmailForm.controls['email'].value)
@@ -39,7 +38,6 @@ export class ChangeEmailComponent {
         this.blocked = false
       }
     } catch (err) {
-      event.target.classList.remove('was-validated')
       this.blocked = false;
     }
   }

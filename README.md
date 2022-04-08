@@ -46,34 +46,30 @@ Implementing new functionality in the application usually involves:
 
 ## Screenshots
 
-Welcome Page - Authentication:
+Login Page:
 
-![Welcome Page](./screenshots/1.png)
+![Login Page](./screenshots/login.png)
 
-Internationalization (Swahili example):
+Internationalization (Swahili example - incomplete):
 
-![Internationalization (Swahili example)](./screenshots/1B.png)
+![Internationalization (Swahili example - incomplete)](./screenshots/i18n.png)
 
 Account Page:
 
-![Account Page](./screenshots/2.png)
-
-Form Validation on Change Password Page:
-
-![Form Validation on Change Password Page](./screenshots/3.png)
+![Account Page](./screenshots/account.png)
 
 Login Revocation:
 
-![Login Revocation](./screenshots/4.png)
+![Login Revocation](./screenshots/revoke.png)
 
 Email Verification Code for Signup or Password Reset:
 
-![Email Verification Code for Signup or Password Reset](./screenshots/5.png)
+![Email Verification Code for Signup or Password Reset](./screenshots/otp.png)
 
 Dark Mode:
 
-![Dark Mode](./screenshots/6.png)
+![Dark Mode](./screenshots/dark.png)
 
 Responsive UI (Mobile View):
 
-![Responsive UI (Mobile View)](./screenshots/7.png)
+![Responsive UI (Mobile View)](./screenshots/mobile.png)

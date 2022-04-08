@@ -30,7 +30,6 @@ export class RegisterComponent implements OnInit {
 
   async register(event: any) {
     try {
-      event.target.classList.add('was-validated')
       if (this.registerForm.valid) {
         this.blocked = true;
         const token = await this.userService.beginSignUp(this.registerForm.controls['email'].value)
@@ -41,14 +40,12 @@ export class RegisterComponent implements OnInit {
           await this.userService.completeSignUp(this.registerForm.controls['email'].value, this.registerForm.controls['password'].value, token.token, val)
           this.snackbar.open($localize`Sign up successful`)
           this.registerForm.reset()
-          event.target.classList.remove('was-validated')
         } else {
           this.snackbar.open($localize`Cancelled - You may try again`)
         }
         this.blocked = false
       }
     } catch (err) {
-      event.target.classList.remove('was-validated')
       this.blocked = false;
     }
   }
