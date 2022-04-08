@@ -28,7 +28,7 @@ export class RegisterComponent implements OnInit {
     val ? this.registerForm.disable() : this.registerForm.enable()
   }
 
-  async register(event: any) {
+  async register() {
     try {
       if (this.registerForm.valid) {
         this.blocked = true;

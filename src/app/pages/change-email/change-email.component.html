@@ -1,5 +1,5 @@
 <h2 i18n>Change Email</h2>
-<form [formGroup]="changeEmailForm" (ngSubmit)="changeEmail($event)" fxLayout="column" fxLayoutGap="1rem">
+<form [formGroup]="changeEmailForm" (ngSubmit)="changeEmail()" fxLayout="column" fxLayoutGap="1rem">
     <mat-form-field fxLayout="column">
         <mat-label i18n>New Email</mat-label>
         <input matInput formControlName="email" type="email" placeholder="name@example.org">

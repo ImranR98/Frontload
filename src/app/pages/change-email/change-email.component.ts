@@ -24,7 +24,7 @@ export class ChangeEmailComponent {
     val ? this.changeEmailForm.disable() : this.changeEmailForm.enable()
   }
 
-  async changeEmail(event: any) {
+  async changeEmail() {
     try {
       if (this.changeEmailForm.valid) {
         this.blocked = true;

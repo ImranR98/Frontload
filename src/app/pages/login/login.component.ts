@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
     val ? this.loginForm.disable() : this.loginForm.enable()
   }
 
-  async login(event: any) {
+  async login() {
     try {
       if (this.loginForm.valid) {
         this.blocked = true

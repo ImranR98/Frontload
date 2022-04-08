@@ -19,7 +19,7 @@ export class OtpBottomSheetComponent {
     this.bottomSheetRef.dismiss(null)
   }
 
-  submit(event: any) {
+  submit() {
     if (this.otpForm.valid)
       this.bottomSheetRef.dismiss(this.otpForm.controls['code'].value)
   }

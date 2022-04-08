@@ -30,7 +30,7 @@ export class ForgotPasswordComponent implements OnInit {
     val ? this.resetPasswordForm.disable() : this.resetPasswordForm.enable()
   }
 
-  async resetPassword(event: any) {
+  async resetPassword() {
     try {
       if (this.resetPasswordForm.valid) {
         this.blocked = true;

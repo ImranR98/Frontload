@@ -97,7 +97,7 @@ export class UserService {
   }
 
   // Used by the router to check if protected routes should be accessible
-  canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+  canActivate(_next: ActivatedRouteSnapshot, _state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     if (!this.isLoggedIn.value) {
       this.router.navigate(['/login'])
     }

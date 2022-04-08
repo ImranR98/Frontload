@@ -1,5 +1,5 @@
 <h2>{{data.name}}</h2>
-<form [formGroup]="otpForm" (ngSubmit)="submit($event)" fxLayout="column" fxLayoutGap="1rem">
+<form [formGroup]="otpForm" (ngSubmit)="submit()" fxLayout="column" fxLayoutGap="1rem">
     <mat-form-field fxLayout="column">
         <mat-label i18n>{{data.digits}} Digit code</mat-label>
         <input matInput formControlName="code">

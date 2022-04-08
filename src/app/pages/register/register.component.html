@@ -1,5 +1,5 @@
 <h2 i18n>Signup</h2>
-<form [formGroup]="registerForm" (ngSubmit)="register($event)" fxLayout="column" fxLayoutGap="1rem">
+<form [formGroup]="registerForm" (ngSubmit)="register()" fxLayout="column" fxLayoutGap="1rem">
     <mat-form-field>
         <mat-label i18n>Email</mat-label>
         <input matInput formControlName="email" type="email" placeholder="name@example.org">

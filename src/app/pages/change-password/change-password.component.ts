@@ -22,7 +22,7 @@ export class ChangePasswordComponent {
     val ? this.changePasswordForm.disable() : this.changePasswordForm.enable()
   }
 
-  async changePassword(event: any) {
+  async changePassword() {
     try {
       if (this.changePasswordForm.valid) {
         this.blocked = true;
