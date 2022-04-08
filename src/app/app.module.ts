@@ -29,9 +29,9 @@ import { AccountComponent } from './pages/account/account.component'
 import { CommonModule } from '@angular/common';
 import { ChangeEmailComponent } from './pages/change-email/change-email.component';
 import { ChangePasswordComponent } from './pages/change-password/change-password.component';
-import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
-import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { PasswordFormComponent } from './components/password-form/password-form.component';
 import { ConfirmBottomSheetComponent } from './components/confirm-bottom-sheet/confirm-bottom-sheet.component';
 import { OtpBottomSheetComponent } from './components/otp-bottom-sheet/otp-bottom-sheet.component';

@@ -17,4 +17,19 @@
             </mat-menu>
         </div>
     </div>
+    <div *ngIf="!isLoggedIn">
+        <div fxLayout="row" fxLayoutGap="1rem" fxHide fxShow.sm fxShow.gt-sm>
+            <button mat-button routerLink="/login" routerLinkActive="active" i18n>Login</button>
+            <button mat-button routerLink="/signup" routerLinkActive="active" i18n>Signup</button>
+            <button mat-button routerLink="/forgot-password" routerLinkActive="active" i18n>Forgot Password</button>
+        </div>
+        <div fxHide fxShow.lt-sm>
+            <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item routerLink="/login" routerLinkActive="active" i18n>Login</button>
+                <button mat-menu-item routerLink="/signup" routerLinkActive="active" i18n>Signup</button>
+                <button mat-menu-item routerLink="/forgot-password" routerLinkActive="active" i18n>Forgot Password</button>
+            </mat-menu>
+        </div>
+    </div>
 </mat-toolbar>

@@ -1,3 +1,4 @@
+<h2 i18n>Login</h2>
 <form [formGroup]="loginForm" (ngSubmit)="login($event)" fxLayout="column" fxLayoutGap="1rem">
     <mat-form-field>
         <mat-label i18n>Email</mat-label>
@@ -5,5 +6,5 @@
     </mat-form-field>
     <app-password-form [disabled]="loginForm.disabled"></app-password-form>
     <mat-checkbox formControlName="remember" i18n>Remember me</mat-checkbox>
-    <button mat-stroked-button type="submit" color="primary" [disabled]="loginForm.disabled" i18n>Sign In</button>
+    <button mat-stroked-button type="submit" color="primary" [disabled]="loginForm.disabled || !loginForm.valid" i18n>Sign In</button>
 </form>

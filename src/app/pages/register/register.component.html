@@ -1,8 +1,9 @@
+<h2 i18n>Signup</h2>
 <form [formGroup]="registerForm" (ngSubmit)="register($event)" fxLayout="column" fxLayoutGap="1rem">
     <mat-form-field>
         <mat-label i18n>Email</mat-label>
         <input matInput formControlName="email" type="email" placeholder="name@example.org">
     </mat-form-field>
-    <app-password-form [disabled]="registerForm.disabled"></app-password-form>
-    <button mat-stroked-button type="submit" color="primary" [disabled]="registerForm.disabled" i18n>Sign Up</button>
+    <app-password-form [disabled]="registerForm.disabled" [enforceReqs]="true"></app-password-form>
+    <button mat-stroked-button type="submit" color="primary" [disabled]="registerForm.disabled || !registerForm.valid" i18n>Sign Up</button>
 </form>

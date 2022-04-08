@@ -1,14 +1,3 @@
-<div *ngIf="isLoggedIn">
+<div>
     <p i18n>Welcome!</p>
 </div>
-<mat-tab-group *ngIf="!isLoggedIn">
-    <mat-tab label="Sign In">
-        <app-login class="stdMargin"></app-login>
-    </mat-tab>
-    <mat-tab label="Sign Up">
-        <app-register class="stdMargin"></app-register>
-    </mat-tab>
-    <mat-tab label="Reset Password">
-        <app-forgot-password class="stdMargin"></app-forgot-password>
-    </mat-tab>
-</mat-tab-group>

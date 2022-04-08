@@ -20,8 +20,10 @@ export class LoginComponent implements OnInit {
   loadSavedEmail() {
     let savedEmail = localStorage.getItem('saved_email')
     if (savedEmail) {
-      this.loginForm.controls['email'].setValue(savedEmail)
+      setTimeout(() => {
+        this.loginForm.controls['email'].setValue(savedEmail)
       this.loginForm.controls['remember'].setValue(true)
+      })
     }
   }
 
@@ -34,7 +36,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.userService.isLoggedIn) this.router.navigate(['/'])
+    if (this.userService.isLoggedIn.value) this.router.navigate(['/'])
     this.loadSavedEmail()
   }
 
