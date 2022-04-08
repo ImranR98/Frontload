@@ -1,4 +1,0 @@
-<ngb-toast *ngFor="let toast of toastService.toasts" [class]="toast.className" [autohide]="true" [delay]="toast.delay"
-    (hidden)="toastService.removeToast(toast)">
-    {{ toast.message }}
-</ngb-toast>

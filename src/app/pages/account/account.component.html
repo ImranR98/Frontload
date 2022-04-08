@@ -1,45 +1,32 @@
-<div *ngIf="me">
-    <div class="card mb-3">
-        <div class="card-body">
-            <h5 class="card-title">{{me.email}}</h5>
-            <div class="d-grid gap-2 d-md-block">
-                <div class="btn-group">
-                    <button type="button" class="btn btn-outline-primary" routerLink="/change-email"
-                        [disabled]="loading" i18n>Change
-                        Email</button>
-                    <button type="button" class="btn btn-outline-primary" routerLink="/change-password"
-                        [disabled]="loading" i18n>Change
-                        Password</button>
+<div *ngIf="me" fxLayout="column" fxLayoutGap="1rem">
+    <h2 class="breakWord">{{me.email}}</h2>
+    <div fxLayout="row" fxLayoutGap="1rem">
+        <button mat-stroked-button color="primary" routerLink="/change-email" [disabled]="loading" i18n>Change
+            Email</button>
+        <button mat-stroked-button color="primary" routerLink="/change-password" [disabled]="loading" i18n>Change
+            Password</button>
+    </div>
+    <mat-expansion-panel (opened)="isCollapsed = false" (closed)="isCollapsed = true">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                <strong>{{isCollapsed ? loginsCollapseText.show : loginsCollapseText.hide}}</strong>
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div fxLayout="column" fxLayoutGap="1rem">
+            <div *ngFor="let login of me?.refreshTokens" fxLayout="column" fxLayoutGap="1rem">
+                <mat-divider></mat-divider>
+                <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="1rem" fxLayoutAlign="space-between center"
+                    fxLayoutAlign.lt-sm="default default">
+                    <span i18n class="card-title">{{formatUAString(login.userAgent)}} - {{login.date | date: 'medium' }}
+                    </span>
+                    <button mat-stroked-button color="warn" (click)="revokeLogin(login.id)" [disabled]="loading" i18n>Revoke
+                        Login</button>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="card card-body">
-        <div class="d-grid gap-2 d-md-block">
-            <button type="button" class="btn btn-outline-primary" (click)="collapse.toggle()"
-                [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
-                {{isCollapsed ? loginsCollapseText.show : loginsCollapseText.hide}}
-            </button>
-        </div>
-        <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
-            <div *ngFor="let login of me?.refreshTokens">
-                <hr>
-                <div class="row justify-content-between align-items-center">
-                    <div class="col-auto">
-                        <h5 i18n class="card-title">{{formatUAString(login.userAgent)}}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">{{login.date | date: 'medium' }}</h6>
-                    </div>
-                    <div class="col-auto">
-                        <button type="button" class="btn btn-danger" (click)="revokeLogin(login.id)"
-                            [disabled]="loading" i18n>Revoke
-                            Login</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    </mat-expansion-panel>
 </div>
 
 <p *ngIf="!me">
-    <ngb-progressbar [value]="100" [striped]="true" [animated]="true"></ngb-progressbar>
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
 </p>

@@ -20,8 +20,10 @@ export class LoginComponent implements OnInit {
   loadSavedEmail() {
     let savedEmail = localStorage.getItem('saved_email')
     if (savedEmail) {
-      this.loginForm.controls['email'].setValue(savedEmail)
+      setTimeout(() => {
+        this.loginForm.controls['email'].setValue(savedEmail)
       this.loginForm.controls['remember'].setValue(true)
+      })
     }
   }
 
@@ -34,7 +36,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.userService.isLoggedIn) this.router.navigate(['/'])
+    if (this.userService.isLoggedIn.value) this.router.navigate(['/'])
     this.loadSavedEmail()
   }
 
@@ -42,9 +44,8 @@ export class LoginComponent implements OnInit {
     val ? this.loginForm.disable() : this.loginForm.enable()
   }
 
-  async login(event: any) {
+  async login() {
     try {
-      event.target.classList.add('was-validated')
       if (this.loginForm.valid) {
         this.blocked = true
         this.saveSavedEmail()
@@ -53,7 +54,6 @@ export class LoginComponent implements OnInit {
       }
     } catch (err) {
       this.blocked = false
-      event.target.classList.remove('was-validated')
       this.loadSavedEmail()
     }
   }

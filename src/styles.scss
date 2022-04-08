@@ -1,16 +1,69 @@
-/* Importing Bootstrap SCSS file. */
-@import "~bootstrap/scss/bootstrap";
+// Material Theming
 
-/* Import dark theme SCSS file
-It is ugly, inconsistent, and uncustomizable, but Bootstrap has no native dark theme support so this will have to do
-No manual toggle possible either */
-@import "~bootstrap-dark-5/dist/css/bootstrap-dark";
+@use '@angular/material' as mat;
 
-/* All the rest */
-.form-group {
-    @extend .mb-3;
+@include mat.core();
+
+$Frontload-primary-light: mat.define-palette(mat.$indigo-palette);
+$Frontload-accent-light: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$Frontload-warn-light: mat.define-palette(mat.$red-palette);
+
+$Frontload-theme-light: mat.define-light-theme((
+  color: (
+    primary: $Frontload-primary-light,
+    accent: $Frontload-accent-light,
+    warn: $Frontload-warn-light,
+  )
+));
+
+$Frontload-primary-dark: mat.define-palette(mat.$green-palette, A400);
+$Frontload-accent-dark: mat.define-palette(mat.$deep-purple-palette, A100);
+$Frontload-warn-dark: mat.define-palette(mat.$red-palette, A100);
+
+$Frontload-theme-dark: mat.define-dark-theme((
+  color: (
+    primary: $Frontload-primary-dark,
+    accent: $Frontload-accent-dark,
+    warn: $Frontload-warn-dark,
+  )
+));
+
+@media (prefers-color-scheme: light) {
+  @include mat.all-component-themes($Frontload-theme-light);
 }
 
-h2 {
-    @extend .mb-4
+@media (prefers-color-scheme: dark) {
+  @include mat.all-component-themes($Frontload-theme-dark);
+}
+
+
+// Everything Else
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.outerPageWrapper {
+  margin: 1rem;
+  .xs, .sm {
+    width: 100%;
+  }
+  .md {
+    width: 90%;
+  }
+  .lg {
+    width: 80%;
+  }
+  .xl {
+    width: 60%;
+  }
+}
+
+.stdMargin {
+  margin: 1rem;
+}
+
+.breakWord {
+  word-wrap: break-word;
 }

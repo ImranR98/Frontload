@@ -1,15 +1,9 @@
-import { Component, HostBinding, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html'
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'Frontload';
-
-  @HostBinding('class') className = ''
-
-  ngOnInit(): void {
-      document.querySelector('html')?.classList.add('dark-mode')
-  }
 }

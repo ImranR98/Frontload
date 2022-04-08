@@ -1,15 +1,15 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { environment } from 'src/environments/environment';
 import { AppError, AppErrorInterface, isServerError, serverErrors } from '../../models/error.models';
-import { ToastService } from '../toast/toast.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ErrorService {
 
-  constructor(private toastService: ToastService) { }
+  constructor(private snackbar: MatSnackBar) { }
 
   standardizeError(error: any, actionable: boolean = false) {
     let standardError: AppErrorInterface = new AppError(actionable);
@@ -33,6 +33,6 @@ export class ErrorService {
       console.log(error);
     }
     error = this.standardizeError(error, false);
-    this.toastService.showToast(error.message, 'danger')
+    this.snackbar.open(error.message)
   }
 }

@@ -42,7 +42,7 @@ export class UserService {
     this.accessToken = ''
     this.refreshToken = ''
     this.isLoggedIn.next(false)
-    this.router.navigate(['/'])
+    this.router.navigate(['/login'])
   }
 
   // Make login request and save tokens if successful
@@ -97,8 +97,10 @@ export class UserService {
   }
 
   // Used by the router to check if protected routes should be accessible
-  canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    if (!this.isLoggedIn.value) this.router.navigate(['/'])
+  canActivate(_next: ActivatedRouteSnapshot, _state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+    if (!this.isLoggedIn.value) {
+      this.router.navigate(['/login'])
+    }
     return this.isLoggedIn.value
   }
 }

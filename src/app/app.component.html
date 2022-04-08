@@ -1,5 +1,6 @@
 <app-navbar></app-navbar>
-<div class="container mt-3 mb-3">
-    <router-outlet></router-outlet>
+<div class="outerPageWrapper" fxLayout="column" fxLayoutAlign="center center">
+    <div [ngClass.lt-sm]="'xs'" [ngClass.sm]="'sm'" [ngClass.md]="'md'" [ngClass.lg]="'lg'" [ngClass.gt-lg]="'xl'">
+        <router-outlet></router-outlet>
+    </div>
 </div>
-<app-toast aria-live="polite" aria-atomic="true"></app-toast>

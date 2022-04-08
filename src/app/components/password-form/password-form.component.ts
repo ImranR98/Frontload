@@ -38,10 +38,8 @@ export class PasswordFormComponent implements OnInit, OnChanges {
 
   // Enable the password field whenever the @Input disabled property changes
   ngOnChanges(changes: SimpleChanges): void {
-    console.log('CHANGE')
     for (let propName in changes) {
       if (propName === 'disabled') {
-        console.log(this.disabled)
         this.disabled ? this.password?.disable() : this.password?.enable()
       }
     }

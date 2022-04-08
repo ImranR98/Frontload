@@ -1,18 +1,35 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" routerLink="/">Frontload</a>
-        <button *ngIf="isLoggedIn" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup" aria-expanded="false" i18n-aria-label aria-label="Toggle navigation"
-            (click)="collapsed = !collapsed">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="navbar-collapse" [class.collapse]="collapsed" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a *ngIf="isLoggedIn" class="nav-link" routerLink="/" routerLinkActive="active"
-                    [routerLinkActiveOptions]="{exact: true}" i18n>Home</a>
-                <a *ngIf="isLoggedIn" class="nav-link" routerLink="/account" routerLinkActive="active" i18n>Account</a>
-                <a *ngIf="isLoggedIn" class="nav-link" (click)="logout()" routerLink="/" i18n>Sign Out</a>
-            </div>
+<mat-toolbar color="primary" fxLayout="row" fxLayoutGap="1rem" fxLayoutAlign="space-between center">
+    <span>Frontload</span>
+    <div *ngIf="isLoggedIn">
+        <div fxLayout="row" fxLayoutGap="1rem" fxHide fxShow.sm fxShow.gt-sm>
+            <button mat-button routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+                i18n>Home</button>
+            <button mat-button routerLink="/account" routerLinkActive="active" i18n>Account</button>
+            <button mat-button (click)="logout()" routerLink="/" i18n>Sign Out</button>
+        </div>
+        <div fxHide fxShow.lt-sm>
+            <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+                    i18n>Home</button>
+                <button mat-menu-item routerLink="/account" routerLinkActive="active" i18n>Account</button>
+                <button mat-menu-item (click)="logout()" routerLink="/" i18n>Sign Out</button>
+            </mat-menu>
         </div>
     </div>
-</nav>
+    <div *ngIf="!isLoggedIn">
+        <div fxLayout="row" fxLayoutGap="1rem" fxHide fxShow.sm fxShow.gt-sm>
+            <button mat-button routerLink="/login" routerLinkActive="active" i18n>Login</button>
+            <button mat-button routerLink="/signup" routerLinkActive="active" i18n>Signup</button>
+            <button mat-button routerLink="/forgot-password" routerLinkActive="active" i18n>Forgot Password</button>
+        </div>
+        <div fxHide fxShow.lt-sm>
+            <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item routerLink="/login" routerLinkActive="active" i18n>Login</button>
+                <button mat-menu-item routerLink="/signup" routerLinkActive="active" i18n>Signup</button>
+                <button mat-menu-item routerLink="/forgot-password" routerLinkActive="active" i18n>Forgot Password</button>
+            </mat-menu>
+        </div>
+    </div>
+</mat-toolbar>
