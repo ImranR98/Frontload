@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user/user.service';
@@ -12,10 +12,10 @@ export class ChangePasswordComponent {
 
   constructor(private snackbar: MatSnackBar, private userService: UserService, private router: Router) { }
 
-  changePasswordForm = new FormGroup({
-    password: new FormControl(),
-    newPassword: new FormControl(),
-    revokeRefreshTokens: new FormControl(false)
+  changePasswordForm = new UntypedFormGroup({
+    password: new UntypedFormControl(),
+    newPassword: new UntypedFormControl(),
+    revokeRefreshTokens: new UntypedFormControl(false)
   });
 
   set blocked(val: boolean) {

@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { FormControl, FormGroupDirective, Validators } from '@angular/forms';
+import { UntypedFormControl, FormGroupDirective, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-password-form',
@@ -12,7 +12,7 @@ export class PasswordFormComponent implements OnInit, OnChanges {
   @Input() controlName: string = 'password'
   @Input() enforceReqs: boolean = false
 
-  password: FormControl | undefined
+  password: UntypedFormControl | undefined
 
   constructor(private rootFormGroup: FormGroupDirective) { }
 
@@ -30,7 +30,7 @@ export class PasswordFormComponent implements OnInit, OnChanges {
   // Grab the parent's formGroup for password and add the relevant validators
   // The custom password requirements validator is only used if the formGroup contains a confirmPassword field
   ngOnInit(): void {
-    this.password = this.rootFormGroup.control.get(this.controlName) as FormControl
+    this.password = this.rootFormGroup.control.get(this.controlName) as UntypedFormControl
     this.enforceReqs ?
       this.password?.setValidators([Validators.required, Validators.minLength(8)]) :
       this.password?.setValidators([Validators.required])
