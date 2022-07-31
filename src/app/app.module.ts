@@ -14,7 +14,7 @@ import { MatBottomSheetModule } from '@angular/material/bottom-sheet'
 import { MatExpansionModule } from '@angular/material/expansion'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input'
-import { MatSnackBarModule } from '@angular/material/snack-bar'
+import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar'
 import { MatToolbarModule } from '@angular/material/toolbar'
 import { MatProgressBarModule } from '@angular/material/progress-bar'
 import { MatTabsModule } from '@angular/material/tabs'
@@ -76,7 +76,9 @@ import { OtpBottomSheetComponent } from './components/otp-bottom-sheet/otp-botto
     provide: HTTP_INTERCEPTORS,
     useClass: AppHttpInterceptor,
     multi: true
-  }],
+  },
+  { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 3000 } }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

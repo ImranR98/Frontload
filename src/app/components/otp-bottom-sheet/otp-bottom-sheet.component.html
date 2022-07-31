@@ -1,4 +1,5 @@
 <h2>{{data.name}}</h2>
+<p i18n>Enter the code sent to you</p>
 <form [formGroup]="otpForm" (ngSubmit)="submit()" fxLayout="column" fxLayoutGap="1rem">
     <mat-form-field fxLayout="column">
         <mat-label i18n>{{data.digits}} Digit code</mat-label>

@@ -33,6 +33,6 @@ export class ErrorService {
       console.log(error);
     }
     error = this.standardizeError(error, false);
-    this.snackbar.open(error.message)
+    this.snackbar.open(error.message, undefined, { duration: 5000 })
   }
 }

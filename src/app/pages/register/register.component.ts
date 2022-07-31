@@ -33,8 +33,7 @@ export class RegisterComponent implements OnInit {
       if (this.registerForm.valid) {
         this.blocked = true;
         const token = await this.userService.beginSignUp(this.registerForm.controls['email'].value)
-        this.snackbar.open($localize`A verification code has been emailed to you`)
-        const sheetRef = this.bottomSheet.open(OtpBottomSheetComponent, { disableClose: true })
+        const sheetRef = this.bottomSheet.open(OtpBottomSheetComponent, { disableClose: true, data: { digits: 6, name: $localize`Email Verification Code` } })
         const val = await firstValueFrom(sheetRef.afterDismissed())
         if (typeof val === 'string') {
           await this.userService.completeSignUp(this.registerForm.controls['email'].value, this.registerForm.controls['password'].value, token.token, val)

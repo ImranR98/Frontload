@@ -35,8 +35,7 @@ export class ForgotPasswordComponent implements OnInit {
       if (this.resetPasswordForm.valid) {
         this.blocked = true;
         const token = await this.userService.beginResetPassword(this.resetPasswordForm.controls['email'].value)
-        this.snackbar.open($localize`A verification code has been emailed to you`)
-        const sheetRef = this.bottomSheet.open(OtpBottomSheetComponent, { disableClose: true })
+        const sheetRef = this.bottomSheet.open(OtpBottomSheetComponent, { disableClose: true, data: { digits: 6, name: $localize`Password Verification Code` } })
         const val = await firstValueFrom(sheetRef.afterDismissed())
         if (typeof val === 'string') {
           await this.userService.completeResetPassword(this.resetPasswordForm.controls['email'].value, this.resetPasswordForm.controls['password'].value, token.token, val)
